@@ -21,5 +21,15 @@
         android:layout_toEndOf="@+id/customerTextView"
         android:onClick="sendMessage"
         android:text="Button" />
+
+    <Button
+        android:id="@+id/newAddressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="60dp"
+        android:layout_toEndOf="@+id/customerTextView"
+        android:text="Button" />
 </RelativeLayout>
 

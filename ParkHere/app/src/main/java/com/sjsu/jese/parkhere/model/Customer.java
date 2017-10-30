@@ -8,6 +8,16 @@ public class Customer {
     private String name;
     private String email;
     private int phone;
+    private Address address;
+    public Customer() {
+    }
+
+    public Customer(String name, String email, int phone, Address address) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
 
     public String getName() {
         return name;
@@ -31,5 +41,13 @@ public class Customer {
 
     public void setPhone(int phone) {
         this.phone = phone;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
