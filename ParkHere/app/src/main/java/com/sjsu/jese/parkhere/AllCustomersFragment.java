@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sjsu.jese.parkhere.model.Customer;
@@ -39,12 +38,7 @@ public class AllCustomersFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_all_customers, container, false);
 
         cusListView = (ListView) view.findViewById(R.id.customer_list);
-        FirebaseListAdapter<Customer> mAdapter = new FirebaseListAdapter<Customer>(this, Customer.class, android.R.layout.simple_list_item_1, customerRef) {
-            @Override
-            protected void populateView(View view, Customer customer, int position) {
 
-            }
-        }
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mCustomers);
         cusListView.setAdapter(arrayAdapter);
         return view;

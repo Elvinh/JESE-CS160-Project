@@ -9,6 +9,8 @@ public class Customer {
     private String email;
     private int phone;
     private Address address;
+
+
     public Customer() {
     }
 
