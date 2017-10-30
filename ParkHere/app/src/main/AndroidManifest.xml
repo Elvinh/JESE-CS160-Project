@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FirebaseTestActivity" />
-        <activity android:name=".BrowsePostActivity"></activity>
+        <activity android:name=".BrowsePostActivity" />
+        <activity android:name=".AllCustomersActivity"></activity>
     </application>
 
 </manifest>

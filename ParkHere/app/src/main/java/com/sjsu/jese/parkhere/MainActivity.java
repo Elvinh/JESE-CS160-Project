@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Address address = new Address("1512 Sun Ln", "San Jose", "CA",95132, "United States");
                 Customer customer = new Customer("Elton Vinh", "eltonv93@gmail.com", 2648907, address);
-                CustomerDAO.getInstance().addAddress(customer);
+                CustomerDAO.getInstance().addCustomer(customer);
+                CustomerDAO.getInstance().getAllCustomer();
             }
         });
     }
