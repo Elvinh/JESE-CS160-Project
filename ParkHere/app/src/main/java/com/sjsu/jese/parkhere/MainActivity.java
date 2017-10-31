@@ -64,10 +64,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void sendMessage(View view) {
+    // When button id = browsePostBtn clicked takes you to browse post activity
+    public void toBrowsePost(View view) {
         Intent intent = new Intent(this, BrowsePostActivity.class);
         startActivity(intent);
     }
 
+    public void toLogin(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
 }
