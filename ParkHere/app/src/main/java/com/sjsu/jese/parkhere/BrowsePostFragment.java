@@ -59,7 +59,7 @@ public class BrowsePostFragment extends Fragment {
         public PostHolder(View itemView) {
             super(itemView);
             cv=(CardView) itemView.findViewById(R.id.card_view);
-            tv=(TextView) itemView.findViewById(R.id.title);
+            tv=(TextView) itemView.findViewById(R.id.address);
         }
         public void bindPost(String i){
             tv.setText(i);
