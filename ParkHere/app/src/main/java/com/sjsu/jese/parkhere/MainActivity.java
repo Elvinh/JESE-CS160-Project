@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mCustomerTextView = (TextView) findViewById(R.id.customerTextView);
-        final Button newAddressButton = (Button) findViewById(R.id.newAddressButton);
+        final Button newCustomerButton = (Button) findViewById(R.id.newAddressButton);
 
-        newAddressButton.setOnClickListener(new View.OnClickListener() {
+        // add new customer to Firebase database. Input is currently hardcoded in
+        newCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Address address = new Address("1512 Sun Ln", "San Jose", "CA",95132, "United States");
@@ -52,30 +53,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // logic to display current logged in user info
         if(user.getUid() != null) {
             myCustomerRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Customer customer = dataSnapshot.getValue(Customer.class);
                     mCustomerTextView.setText("Logged in as: " + user.getEmail());
-
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
-
             });
         }
     }
 
-    // When button id = browsePostBtn clicked takes you to browse post activity
+    // When button id = browsePostBtn clicked takes you to BrowsePostActivity
     public void toBrowsePost(View view) {
         Intent intent = new Intent(this, BrowsePostActivity.class);
         startActivity(intent);
     }
 
+    // When button id = logoutBtn clicked logouts user and goes to LoginActivity
     public void toLogin(View view) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();

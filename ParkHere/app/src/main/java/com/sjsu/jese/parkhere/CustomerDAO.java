@@ -29,6 +29,7 @@ public class CustomerDAO {
     private DatabaseReference addressesRef = mRootRef.child("Customers");
     private String key = addressesRef.push().getKey(); // generates a unique key
 
+    // logic to add new data to Firebase database
     public void addCustomer(String uid, Customer customer) {
         addressesRef.child(uid).setValue(customer);
     }
