@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="lakers"
         android:inputType="textPassword"
         android:selectAllOnFocus="false"
         tools:layout_editor_absoluteX="59dp"
@@ -28,7 +28,7 @@
         android:layout_alignStart="@+id/passwordText"
         android:layout_marginTop="62dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="kobe@lakers.com"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="59dp"
         tools:layout_editor_absoluteY="116dp" />

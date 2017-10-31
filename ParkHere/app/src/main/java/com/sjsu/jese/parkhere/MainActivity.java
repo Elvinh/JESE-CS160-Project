@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toLogin(View view) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

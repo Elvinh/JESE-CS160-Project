@@ -39,7 +39,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginTop="41dp"
         android:onClick="toLogin"
-        android:text="To Login Page" />
+        android:text="Sign Out" />
 
 </RelativeLayout>
 

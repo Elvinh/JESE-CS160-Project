@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         findViewById(R.id.signInBtn).setOnClickListener(this);
         findViewById(R.id.createAccountBtn).setOnClickListener(this);
+        findViewById(R.id.logoutBtn).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -49,10 +50,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onStart() {
         super.onStart();
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null) {
-            greetingTextView.setText("Hello " + currentUser.getDisplayName());
-        }
         updateUI(currentUser);
     }
 
@@ -101,7 +100,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            toMain(user);
                         } else {
                             // if not successful, display message
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
@@ -112,14 +110,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signOut() {
-        if(mAuth.getCurrentUser() != null) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) {
             mAuth.signOut();
         } else {
             Toast.makeText(LoginActivity.this, "Not Logged in",
                     Toast.LENGTH_SHORT).show();
         }
-
-        updateUI(mAuth.getCurrentUser());
+        user = mAuth.getCurrentUser();
+        updateUI(user);
     }
     private  boolean validateForm() {
         boolean valid = true;
@@ -144,19 +143,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-
+            greetingTextView.setText("Hello " + user.getDisplayName());
+            findViewById(R.id.emailText).setVisibility(View.GONE);
+            findViewById(R.id.passwordText).setVisibility(View.GONE);
+            findViewById(R.id.signInBtn).setVisibility(View.GONE);
+            findViewById(R.id.createAccountBtn).setVisibility(View.GONE);
+            toMain();
         } else {
             findViewById(R.id.emailText).setVisibility(View.VISIBLE);
             findViewById(R.id.passwordText).setVisibility(View.VISIBLE);
             findViewById(R.id.signInBtn).setVisibility(View.VISIBLE);
+            findViewById(R.id.logoutBtn).setVisibility(View.GONE);
         }
     }
-    private void toMain(FirebaseUser user) {
-        if (user != null) {
+    private void toMain() {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        } else {
-        }
     }
 
     @Override
