@@ -29,8 +29,8 @@ public class CustomerDAO {
     private DatabaseReference addressesRef = mRootRef.child("Customers");
     private String key = addressesRef.push().getKey(); // generates a unique key
 
-    public void addCustomer(Customer customer) {
-        addressesRef.child("eltonv93@gmail").setValue(customer);
+    public void addCustomer(String uid, Customer customer) {
+        addressesRef.child(uid).setValue(customer);
     }
 
     public void getAllCustomer() {
@@ -40,7 +40,7 @@ public class CustomerDAO {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
                         Customer customer = singleSnapshot.getValue(Customer.class);
-                        Log.d(TAG, "Value is: " + customer.getEmail());
+                        Log.d(TAG, "Value is: ");
                         // do whatever with the data
                     }
                 }

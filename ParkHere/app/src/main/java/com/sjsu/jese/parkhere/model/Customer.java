@@ -6,7 +6,6 @@ package com.sjsu.jese.parkhere.model;
 
 public class Customer {
     private String name;
-    private String email;
     private int phone;
     private Address address;
 
@@ -14,9 +13,8 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String name, String email, int phone, Address address) {
+    public Customer(String name, int phone, Address address) {
         this.name = name;
-        this.email = email;
         this.phone = phone;
         this.address = address;
     }
@@ -27,14 +25,6 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getPhone() {
