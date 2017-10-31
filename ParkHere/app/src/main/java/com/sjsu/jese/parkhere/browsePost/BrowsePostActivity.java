@@ -1,9 +1,11 @@
-package com.sjsu.jese.parkhere;
+package com.sjsu.jese.parkhere.browsePost;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.sjsu.jese.parkhere.R;
 
 public class BrowsePostActivity extends AppCompatActivity {
 
