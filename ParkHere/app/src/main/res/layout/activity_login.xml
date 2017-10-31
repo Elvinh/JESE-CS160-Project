@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sjsu.jese.parkhere.login.LoginActivity">
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="lakers"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="false"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="232dp" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_marginTop="62dp"
+        android:ems="10"
+        android:hint="kobe@lakers.com"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <Button
+        android:id="@+id/signInBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:text="Sign in" />
+
+    <Button
+        android:id="@+id/createAccountBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signInBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:text="Create Account" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/signInBtn"
+        android:layout_below="@+id/createAccountBtn"
+        android:layout_marginTop="32dp"
+        android:text="LOGOUT" />
+
+    <TextView
+        android:id="@+id/helloText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="TextView" />
+
+</RelativeLayout>
