@@ -19,8 +19,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".browsePost.BrowsePostActivity" />
-        <activity android:name=".AllCustomersActivity" />
-        <activity android:name=".login.CreateAccountActivity"></activity>
+        <activity android:name=".login.CreateAccountActivity" />
+        <activity android:name=".newPost.NewPostActivity"></activity>
     </application>
 
 </manifest>
