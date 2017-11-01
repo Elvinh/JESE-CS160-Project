@@ -21,6 +21,11 @@
         <activity android:name=".browsePost.BrowsePostActivity" />
         <activity android:name=".login.CreateAccountActivity" />
         <activity android:name=".newPost.NewPostActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDj3cYi8ucR1H291GL7Z4Ol36-kaKwyLhU"/>
+
     </application>
 
 </manifest>
