@@ -1,5 +1,6 @@
 package com.sjsu.jese.parkhere.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private EditText emailField;
     private EditText passwordField;
+    private ProgressBar loginProgressBar;
 
     private static final String TAG = "MyActivity";
 
@@ -37,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         findViewById(R.id.forgotPassTextView).setOnClickListener(this);
         findViewById(R.id.signInBtn).setOnClickListener(this);
-        findViewById(R.id.createAccountBtn).setOnClickListener(this);
         //findViewById(R.id.logoutBtn).setOnClickListener(this);
         findViewById(R.id.createAccntTextField).setOnClickListener(this);
 
@@ -61,6 +63,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(!validateForm()) {
             return;
         }
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -73,6 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             updateUI(user);
                         } else {
                             // if not successful, display message
+                            progressDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }

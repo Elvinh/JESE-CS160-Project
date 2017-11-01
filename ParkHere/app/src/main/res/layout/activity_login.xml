@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/emailText"
         android:layout_below="@+id/emailText"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
         android:hint="lakers"
         android:inputType="textPassword"
@@ -37,19 +37,11 @@
         android:id="@+id/signInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp"
-        android:text="Sign in" />
-
-    <Button
-        android:id="@+id/createAccountBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signInBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="Create Account" />
+        android:layout_alignEnd="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_centerVertical="true"
+        android:text="Sign in"
+        android:theme="@style/Mybutton" />
 
     <Button
         android:id="@+id/logoutBtn"
@@ -57,27 +49,25 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/signInBtn"
         android:layout_alignBottom="@+id/signInBtn"
-        android:layout_alignStart="@+id/signInBtn"
+        android:layout_centerHorizontal="true"
         android:text="LOGOUT" />
 
     <TextView
         android:id="@+id/forgotPassTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/createAccountBtn"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="23dp"
-        android:layout_toEndOf="@+id/createAccntTextField"
+        android:layout_below="@+id/signInBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
         android:text="Forgot password?" />
 
     <TextView
         android:id="@+id/createAccntTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/forgotPassTextView"
-        android:layout_alignBottom="@+id/forgotPassTextView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="40dp"
+        android:layout_below="@+id/forgotPassTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="Dont Have An Accont?" />
 
 </RelativeLayout>
