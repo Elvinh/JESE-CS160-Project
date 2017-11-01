@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sjsu.jese.parkhere.login.ForgotPasswordActivity">
+    tools:context="com.sjsu.jese.parkhere.login.ForgotPasswordActivity"
+    android:background="#c4775e">
 
     <EditText
         android:id="@+id/emailField"

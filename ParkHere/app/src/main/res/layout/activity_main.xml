@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#c4775e"
     >
 
     <TextView
@@ -15,9 +16,9 @@
         android:id="@+id/browsePostBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/newAddressButton"
-        android:layout_below="@+id/newAddressButton"
-        android:layout_marginTop="57dp"
+        android:layout_above="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
         android:onClick="toBrowsePost"
         android:text="To Browse Post" />
 
@@ -25,19 +26,17 @@
         android:id="@+id/newAddressButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="60dp"
-        android:layout_toEndOf="@+id/customerTextView"
+        android:layout_alignBottom="@+id/browsePostBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
         android:text="Create NEW CUSTOMER" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/browsePostBtn"
-        android:layout_below="@+id/browsePostBtn"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:onClick="toLogin"
         android:text="Sign Out" />
 
