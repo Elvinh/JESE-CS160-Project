@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,7 +28,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText emailField;
     private EditText passwordField;
     private ProgressBar loginProgressBar;
-
+    private TextInputLayout inputLayoutEmail;
+    private TextInputLayout inputLayoutPassword;
     private static final String TAG = "MyActivity";
 
     @Override
@@ -37,6 +39,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
+        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
+        inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_email);
 
         findViewById(R.id.forgotPassTextView).setOnClickListener(this);
         findViewById(R.id.signInBtn).setOnClickListener(this);
@@ -106,18 +110,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         String email = emailField.getText().toString();
         if(TextUtils.isEmpty(email)) {
-            emailField.setError("Required.");
+            //emailField.setError("Required.");
+            inputLayoutEmail.setError("Required.");
             valid = false;
         } else {
-            emailField.setError(null);
+            //emailField.setError(null);
+            inputLayoutEmail.setError(null);
+
         }
 
         String password = passwordField.getText().toString();
         if(TextUtils.isEmpty(email)) {
-            passwordField.setError("Required.");
+            //passwordField.setError("Required.");
+            inputLayoutPassword.setError("Required.");
             valid = false;
         } else {
-            passwordField.setError(null);
+            inputLayoutPassword.setError(null);
         }
 
         return valid;
@@ -133,7 +141,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             findViewById(R.id.emailText).setVisibility(View.VISIBLE);
             findViewById(R.id.passwordText).setVisibility(View.VISIBLE);
             findViewById(R.id.signInBtn).setVisibility(View.VISIBLE);
-            findViewById(R.id.logoutBtn).setVisibility(View.GONE);
         }
     }
     private void toMain() {

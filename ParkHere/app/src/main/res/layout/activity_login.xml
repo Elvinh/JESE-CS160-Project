@@ -6,68 +6,87 @@
     android:layout_height="match_parent"
     tools:context="com.sjsu.jese.parkhere.login.LoginActivity">
 
-    <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/emailText"
-        android:layout_below="@+id/emailText"
-        android:layout_marginTop="11dp"
-        android:ems="10"
-        android:hint="lakers"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="false"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="232dp" />
-
-    <EditText
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:hint="kobe@lakers.com"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="116dp" />
+        android:gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/signInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/passwordText"
-        android:layout_alignStart="@+id/passwordText"
-        android:layout_centerVertical="true"
-        android:text="Sign in"
-        android:theme="@style/Mybutton" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/input_layout_email"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/parkhere_logo" />
 
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/signInBtn"
-        android:layout_alignBottom="@+id/signInBtn"
-        android:layout_centerHorizontal="true"
-        android:text="LOGOUT" />
 
-    <TextView
-        android:id="@+id/forgotPassTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signInBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
-        android:text="Forgot password?" />
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_email"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo">
 
-    <TextView
-        android:id="@+id/createAccntTextField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/forgotPassTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Dont Have An Accont?" />
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="email" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_layout_email"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/signInBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/input_layout_password"
+            android:layout_below="@+id/input_layout_password"
+            android:layout_marginTop="37dp"
+            android:text="Sign In" />
+
+        <TextView
+            android:id="@+id/forgotPassTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignStart="@+id/input_layout_password"
+            android:layout_below="@+id/signInBtn"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="37dp"
+            android:text="Forgot password?" />
+
+        <TextView
+            android:id="@+id/createAccntTextField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/signInBtn"
+            android:layout_below="@+id/forgotPassTextView"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="13dp"
+            android:text="Dont have an account?" />
+
+    </RelativeLayout>
+
+
+
 
 </RelativeLayout>
