@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Address address = new Address("1512 Sun Ln", "San Jose", "CA",95132, "United States");
-                Customer customer = new Customer("Elton Vinh", 2648907, address);
-                CustomerDAO.getInstance().addCustomer("1", customer);
+                Customer customer = new Customer("JESE", 2648907, address);
+                CustomerDAO.getInstance().addCustomer("12321", customer);
                 CustomerDAO.getInstance().getAllCustomer();
             }
         });
@@ -52,20 +52,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         // logic to display current logged in user info
-        if(user.getUid() != null) {
+        if (user.getUid() != null) {
             myCustomerRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Customer customer = dataSnapshot.getValue(Customer.class);
-                    mCustomerTextView.setText("Logged in as: " + user.getEmail());
+                    mCustomerTextView.setText("Logged in as: " + customer.getName());
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
             });
+
         }
     }
 

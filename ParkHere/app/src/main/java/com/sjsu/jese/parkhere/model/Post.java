@@ -8,6 +8,7 @@ public class Post {
     private Address address;
     private String ownerUid;
 
+
     public Post() {}
     
     public Post(Address address, String ownerUid) {

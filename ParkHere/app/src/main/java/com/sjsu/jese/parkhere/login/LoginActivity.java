@@ -29,8 +29,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private EditText emailField;
     private EditText passwordField;
-    private TextView greetingTextView;
+
     private static final String TAG = "MyActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +39,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
-        greetingTextView = (TextView) findViewById(R.id.helloText);
 
+        findViewById(R.id.forgotPassTextView).setOnClickListener(this);
         findViewById(R.id.signInBtn).setOnClickListener(this);
         findViewById(R.id.createAccountBtn).setOnClickListener(this);
         findViewById(R.id.logoutBtn).setOnClickListener(this);
+        findViewById(R.id.createAccntTextField).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -55,36 +57,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         updateUI(currentUser);
     }
 
-    private void createAccount(String email, String password) {
-        if(!validateForm()) {
-            return;
-        }
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    Customer customer = new Customer("Koby", 69, new Address("Jane St","Milpitas","CA",95035,"US"));
-                    CustomerDAO.getInstance().addCustomer(user.getUid(), customer);
-                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName("Dogger93")
-                            .setPhotoUri(Uri.parse(""))
-                            .build();
+    private void createAccount() {
 
-                    user.updateProfile(profileUpdates)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Log.d(TAG, "User profile updated.");
-                                    }
-                                }
-                            });
-                    updateUI(user);
-
-                }
-        }
-        });
+        Intent intent = new Intent(this, CreateAccountActivity.class);
+        startActivity(intent);
     }
     private void signIn(String email, String password) {
         if(!validateForm()) {
@@ -143,7 +119,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            greetingTextView.setText("Hello " + user.getDisplayName());
             findViewById(R.id.emailText).setVisibility(View.GONE);
             findViewById(R.id.passwordText).setVisibility(View.GONE);
             findViewById(R.id.signInBtn).setVisibility(View.GONE);
@@ -164,12 +139,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.createAccountBtn) {
-            createAccount(emailField.getText().toString(), passwordField.getText().toString());
+        if(id == R.id.createAccntTextField) {
+            createAccount();
         } else if(id == R.id.signInBtn) {
             signIn(emailField.getText().toString(), passwordField.getText().toString());
         } else if(id == R.id.logoutBtn) {
             signOut();
+        } else if(id == R.id.forgotPassTextView) {
+            Toast.makeText(LoginActivity.this, "Forgot Password",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 }

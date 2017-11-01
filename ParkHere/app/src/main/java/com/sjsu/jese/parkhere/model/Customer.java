@@ -9,7 +9,6 @@ public class Customer {
     private int phone;
     private Address address;
 
-
     public Customer() {
     }
 

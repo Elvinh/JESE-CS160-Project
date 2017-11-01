@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sjsu.jese.parkhere.login.ForgotPasswordActivity">
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/emailField"
+        android:layout_below="@+id/emailField"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/screenNameField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/passwordField"
+        android:layout_below="@+id/passwordField"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="screenname"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/phoneNumberField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/screenNameField"
+        android:layout_below="@+id/screenNameField"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:hint="phone #"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/streetAddrField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/phoneNumberField"
+        android:layout_below="@+id/phoneNumberField"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="street address"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/stateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/streetAddrField"
+        android:layout_below="@+id/streetAddrField"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:hint="state"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/cityField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/stateField"
+        android:layout_below="@+id/stateField"
+        android:ems="10"
+        android:hint="city"
+        android:inputType="textPostalAddress" />
+
+    <EditText
+        android:id="@+id/zipField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/cityField"
+        android:layout_below="@+id/cityField"
+        android:ems="10"
+        android:hint="zip"
+        android:inputType="textPostalAddress" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/zipField"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:onClick="createAccount"
+        android:text="Button"
+        tools:text="Submit" />
+</RelativeLayout>

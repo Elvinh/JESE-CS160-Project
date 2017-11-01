@@ -10,9 +10,9 @@
         android:id="@+id/passwordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/emailText"
         android:layout_below="@+id/emailText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="lakers"
         android:inputType="textPassword"
@@ -25,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/passwordText"
-        android:layout_marginTop="62dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="kobe@lakers.com"
         android:inputType="textEmailAddress"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="67dp"
         android:text="Sign in" />
 
     <Button
@@ -48,25 +48,36 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/signInBtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="14dp"
         android:text="Create Account" />
 
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/signInBtn"
+        android:layout_alignBottom="@+id/signInBtn"
         android:layout_alignStart="@+id/signInBtn"
-        android:layout_below="@+id/createAccountBtn"
-        android:layout_marginTop="32dp"
         android:text="LOGOUT" />
 
     <TextView
-        android:id="@+id/helloText"
+        android:id="@+id/forgotPassTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:text="TextView" />
+        android:layout_below="@+id/createAccountBtn"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="23dp"
+        android:layout_toEndOf="@+id/createAccntTextField"
+        android:text="Forgot password?" />
+
+    <TextView
+        android:id="@+id/createAccntTextField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/forgotPassTextView"
+        android:layout_alignBottom="@+id/forgotPassTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp"
+        android:text="Dont Have An Accont?" />
 
 </RelativeLayout>
