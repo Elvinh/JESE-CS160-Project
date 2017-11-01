@@ -18,6 +18,7 @@ import com.sjsu.jese.parkhere.browsePost.BrowsePostActivity;
 import com.sjsu.jese.parkhere.login.LoginActivity;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Customer;
+import com.sjsu.jese.parkhere.newPost.NewPostActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void toNewPost(View view) {
+        Intent intent = new Intent(this, NewPostActivity.class);
         startActivity(intent);
     }
 
