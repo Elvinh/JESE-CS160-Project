@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             findViewById(R.id.emailText).setVisibility(View.VISIBLE);
             findViewById(R.id.passwordText).setVisibility(View.VISIBLE);
             findViewById(R.id.signInBtn).setVisibility(View.VISIBLE);
-            //findViewById(R.id.logoutBtn).setVisibility(View.GONE);
+            findViewById(R.id.logoutBtn).setVisibility(View.GONE);
         }
     }
     private void toMain() {
