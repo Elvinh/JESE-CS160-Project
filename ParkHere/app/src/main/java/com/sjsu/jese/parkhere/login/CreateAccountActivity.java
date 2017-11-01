@@ -109,7 +109,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                         Customer customer = new Customer(screenName, phoneNum,
                                 new Address(streetAddress,city,state,zip,"US"));
 
+                        // add to Firebase database
                         customersRef.child(user.getUid()).setValue(customer);
+
+                       // set values for screenname and photourl
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(screenName)
                                 .setPhotoUri(Uri.parse(""))
@@ -123,6 +126,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
+
                         toLogin();
                     }
                 }
