@@ -16,8 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.sjsu.jese.parkhere.CustomerDAO;
-import com.sjsu.jese.parkhere.MainActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Customer;
@@ -25,6 +25,8 @@ import com.sjsu.jese.parkhere.model.Customer;
 public class CreateAccountActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference customersRef = mRootRef.child("Customers");
 
     private EditText emailText;
     private EditText passwordText;
@@ -106,7 +108,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                         Customer customer = new Customer(screenName, phoneNum,
                                 new Address(streetAddress,city,state,zip,"US"));
-                        CustomerDAO.getInstance().addCustomer(user.getUid(), customer);
+
+                        customersRef.child(user.getUid()).setValue(customer);
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(screenName)
                                 .setPhotoUri(Uri.parse(""))

@@ -42,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Address address = new Address("1512 Sun Ln", "San Jose", "CA",95132, "United States");
-                Customer customer = new Customer("JESE", 2648907, address);
-                CustomerDAO.getInstance().addCustomer("12321", customer);
-                CustomerDAO.getInstance().getAllCustomer();
+                Customer customer = new Customer("asas", 2648907, address);
+                myCustomerRef.child("12341").setValue(customer);
             }
         });
     }

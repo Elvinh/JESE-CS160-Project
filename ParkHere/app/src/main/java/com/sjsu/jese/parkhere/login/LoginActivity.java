@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,13 +16,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.UserProfileChangeRequest;
-import com.sjsu.jese.parkhere.CustomerDAO;
 import com.sjsu.jese.parkhere.MainActivity;
 import com.sjsu.jese.parkhere.R;
-import com.sjsu.jese.parkhere.model.Address;
-import com.sjsu.jese.parkhere.model.Customer;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
@@ -43,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.forgotPassTextView).setOnClickListener(this);
         findViewById(R.id.signInBtn).setOnClickListener(this);
         findViewById(R.id.createAccountBtn).setOnClickListener(this);
-        findViewById(R.id.logoutBtn).setOnClickListener(this);
+        //findViewById(R.id.logoutBtn).setOnClickListener(this);
         findViewById(R.id.createAccntTextField).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -85,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
     }
 
-    private void signOut() {
+    /*private void signOut() {
         FirebaseUser user = mAuth.getCurrentUser();
         if(user != null) {
             mAuth.signOut();
@@ -95,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         user = mAuth.getCurrentUser();
         updateUI(user);
-    }
+    }*/
     private  boolean validateForm() {
         boolean valid = true;
 
@@ -119,16 +114,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            findViewById(R.id.emailText).setVisibility(View.GONE);
+            /*findViewById(R.id.emailText).setVisibility(View.GONE);
             findViewById(R.id.passwordText).setVisibility(View.GONE);
             findViewById(R.id.signInBtn).setVisibility(View.GONE);
-            findViewById(R.id.createAccountBtn).setVisibility(View.GONE);
+            findViewById(R.id.createAccountBtn).setVisibility(View.GONE);*/
             toMain();
         } else {
             findViewById(R.id.emailText).setVisibility(View.VISIBLE);
             findViewById(R.id.passwordText).setVisibility(View.VISIBLE);
             findViewById(R.id.signInBtn).setVisibility(View.VISIBLE);
-            findViewById(R.id.logoutBtn).setVisibility(View.GONE);
+            //findViewById(R.id.logoutBtn).setVisibility(View.GONE);
         }
     }
     private void toMain() {
@@ -143,8 +138,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             createAccount();
         } else if(id == R.id.signInBtn) {
             signIn(emailField.getText().toString(), passwordField.getText().toString());
-        } else if(id == R.id.logoutBtn) {
-            signOut();
+        /*} else if(id == R.id.logoutBtn) {
+            signOut();*/
         } else if(id == R.id.forgotPassTextView) {
             Toast.makeText(LoginActivity.this, "Forgot Password",
                     Toast.LENGTH_SHORT).show();
