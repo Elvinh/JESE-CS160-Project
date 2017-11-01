@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c4775e"
+    android:background="#e27e5d"
     >
 
     <TextView
@@ -44,9 +44,9 @@
         android:id="@+id/newPostBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/browsePostBtn"
         android:layout_below="@+id/loginBtn"
-        android:layout_marginTop="72dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
         android:onClick="toNewPost"
         android:text="To New Post" />
 
