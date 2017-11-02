@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e27e5d">
+    android:background="@color/md_white_1000">
 
     <ImageView
         android:id="@+id/logo"
@@ -24,14 +24,6 @@
         android:text="To Browse Post" />
 
     <Button
-        android:id="@+id/newAddressButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Create NEW CUSTOMER" />
-
-    <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
         android:onClick="toLogin"
-        android:text="Log in" />
+        android:text="Log out" />
 
     <Button
         android:id="@+id/newPostBtn"
