@@ -6,10 +6,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.sjsu.jese.parkhere.R;
 
-public class NewPostActivity extends AppCompatActivity {
+public class NewPostActivity extends AppCompatActivity implements NewPostGetSizeFragment.OnDataPass{
     /*protected GeoDataClient mGeoDataClient;
     protected PlaceDetectionClient mPlaceDetectionClient;
     public static final int REQUEST_LOCATION = 99;*/
@@ -47,7 +48,10 @@ public class NewPostActivity extends AppCompatActivity {
         }*/
 
     }
-
+    @Override
+    public void onDataPass(String data) {
+        Log.d("LOG","hello " + data);
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         /*int PLACE_PICKER_REQUEST = 1;
         if (requestCode == PLACE_PICKER_REQUEST) {
