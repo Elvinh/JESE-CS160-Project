@@ -1,35 +1,17 @@
 package com.sjsu.jese.parkhere.newPost;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.GeoDataClient;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceDetectionApi;
-import com.google.android.gms.location.places.PlaceDetectionClient;
-import com.google.android.gms.location.places.PlaceLikelihood;
-import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
-import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.ui.PlacePicker;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.sjsu.jese.parkhere.Manifest;
 import com.sjsu.jese.parkhere.R;
 
 public class NewPostActivity extends AppCompatActivity {
-    protected GeoDataClient mGeoDataClient;
+    /*protected GeoDataClient mGeoDataClient;
     protected PlaceDetectionClient mPlaceDetectionClient;
-    public static final int REQUEST_LOCATION = 99;
+    public static final int REQUEST_LOCATION = 99;*/
     private static final String TAG = "Location";
 
     @Override
@@ -37,17 +19,22 @@ public class NewPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
 
-        // Construct a GeoDataClient.
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        NewPostGetSizeFragment fragment = new NewPostGetSizeFragment();
+        fragmentTransaction.commit();
+        /*// Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this, null);
 
         // Construct a PlaceDetectionClient.
-        mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
+        mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);*/
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        int PLACE_PICKER_REQUEST = 1;
+        /*int PLACE_PICKER_REQUEST = 1;
         PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
         try{
             startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
@@ -55,12 +42,12 @@ public class NewPostActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        int PLACE_PICKER_REQUEST = 1;
+        /*int PLACE_PICKER_REQUEST = 1;
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
@@ -90,7 +77,7 @@ public class NewPostActivity extends AppCompatActivity {
                 }
             });
 
-        }
+        }*/
 
     }
 }

@@ -9,16 +9,19 @@ import java.util.Date;
 public class Post {
     private Address address;
     private String ownerUid;
-    private Date dateListed;
-    private double baseRatePay;
+    private double dailyRate;
+    private Date dateAvailable;
+    private Date dateEnd;
+    String carSize;
+    String shortDescription;
+    String title;
 
     public Post() {}
 
     public Post(Address address, String ownerUid, Date dateListed, double baseRatePay) {
         this.address = address;
         this.ownerUid = ownerUid;
-        this.dateListed = dateListed;
-        this.baseRatePay = baseRatePay;
+        this.dailyRate = dailyRate;
     }
 
     public Address getAddress() {
@@ -37,19 +40,11 @@ public class Post {
         this.ownerUid = ownerUid;
     }
 
-    public Date getDateListed() {
-        return dateListed;
-    }
-
-    public void setDateListed(Date dateListed) {
-        this.dateListed = dateListed;
-    }
-
     public double getBaseRatePay() {
-        return baseRatePay;
+        return dailyRate;
     }
 
-    public void setBaseRatePay(double baseRatePay) {
-        this.baseRatePay = baseRatePay;
+    public void setBaseRatePay(double dailyRate) {
+        this.dailyRate = dailyRate;
     }
 }

@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sjsu.jese.parkhere.newPost.NewPostGetSizeFragment"
+    android:id="@+id/getSize"
+    android:gravity="center_horizontal">
+
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:text="Let's get started. What's the biggest car size your parking space will hold?"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_size"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/questionText"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/sizeField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Size"
+            android:inputType="textPersonName"
+            android:text="e.g. compact car" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/questionText2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/input_layout_size"
+        android:layout_below="@+id/input_layout_size"
+        android:layout_marginTop="29dp"
+        android:text="How much do you want to charge per day?"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_rate"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/questionText2"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Daily Rate"
+            android:inputType="textPersonName"
+            android:text="$/day" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/questionText"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="34dp"
+        android:text="Next" />
+
+</RelativeLayout>
