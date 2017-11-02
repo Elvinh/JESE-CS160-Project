@@ -1,6 +1,7 @@
 package com.sjsu.jese.parkhere.newPost;
 
 import android.content.Intent;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class NewPostActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         NewPostGetSizeFragment fragment = new NewPostGetSizeFragment();
+        fragmentTransaction.add(R.id.newPost, fragment);
         fragmentTransaction.commit();
         /*// Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this, null);
