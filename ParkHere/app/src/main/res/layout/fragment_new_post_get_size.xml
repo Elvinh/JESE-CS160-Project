@@ -23,14 +23,20 @@
         android:layout_below="@+id/questionText"
         android:layout_marginTop="30dp">
 
-        <EditText
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- <EditText
             android:id="@+id/sizeField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Size"
             android:inputType="textPersonName"
-            android:text="e.g. compact car" />
+            android:text="" /> -->
 
     </android.support.design.widget.TextInputLayout>
 

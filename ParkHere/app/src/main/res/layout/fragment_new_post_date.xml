@@ -23,15 +23,15 @@
         android:layout_marginTop="30dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/startDateField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/input_layout_start_date"
             android:layout_alignEnd="@+id/input_layout_start_date"
-
+            android:clickable="true"
             android:ems="10"
             android:hint="When will your parking space be available?"
-            android:inputType="textPersonName"
+            android:editable="false"
             android:text="Start Date" />
 
     </android.support.design.widget.TextInputLayout>
@@ -45,13 +45,13 @@
         android:layout_marginTop="25dp">
 
         <EditText
-            android:id="@+id/streetField"
+            android:id="@+id/endDateField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:ems="10"
             android:hint="When will your parking space be unavaiable?"
-            android:inputType="textPersonName"
+            android:editable="false"
             android:text="End Date" />
     </android.support.design.widget.TextInputLayout>
 

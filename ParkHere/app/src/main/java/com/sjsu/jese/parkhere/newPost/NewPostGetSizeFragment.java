@@ -10,8 +10,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.sjsu.jese.parkhere.R;
 
@@ -22,6 +25,7 @@ public class NewPostGetSizeFragment extends Fragment {
 
     Button nextButton;
     EditText rateField;
+    Spinner spinner;
     OnDataPass dataPasser;
 
     public NewPostGetSizeFragment() {
@@ -38,6 +42,27 @@ public class NewPostGetSizeFragment extends Fragment {
 
         nextButton = (Button) v.findViewById(R.id.nextBtn);
         rateField = (EditText) v.findViewById(R.id.rateField);
+        spinner = (Spinner) v.findViewById(R.id.spinner);
+
+        String[] options = {"Compact", "Mini Van", "SUV"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, options);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int pos, long id) {
+                // An item was selected. You can retrieve the selected item using
+                // parent.getItemAtPosition(pos)
+                passData(parent.getItemAtPosition(pos).toString());
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Another interface callback
+            }
+        });
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
