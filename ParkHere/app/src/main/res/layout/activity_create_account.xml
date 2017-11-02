@@ -7,91 +7,104 @@
     tools:context="com.sjsu.jese.parkhere.login.ForgotPasswordActivity"
     android:background="#e27e5d">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="215dp"
+        android:layout_height="115dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/parkhere_logo" />
+
     <EditText
         android:id="@+id/emailField"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="19dp"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/passwordField"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/emailField"
         android:layout_below="@+id/emailField"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/screenNameField"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/passwordField"
         android:layout_below="@+id/passwordField"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="screenname"
         android:inputType="textPostalAddress" />
 
     <EditText
         android:id="@+id/phoneNumberField"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/screenNameField"
-        android:layout_below="@+id/screenNameField"
-        android:layout_marginTop="27dp"
+        android:layout_alignBaseline="@+id/zipField"
+        android:layout_alignBottom="@+id/zipField"
+        android:layout_alignEnd="@+id/stateField"
         android:ems="10"
         android:hint="phone #"
         android:inputType="phone" />
 
     <EditText
         android:id="@+id/streetAddrField"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/phoneNumberField"
-        android:layout_below="@+id/phoneNumberField"
-        android:layout_marginTop="19dp"
+        android:layout_alignStart="@+id/screenNameField"
+        android:layout_below="@+id/screenNameField"
+        android:layout_marginTop="17dp"
         android:ems="10"
         android:hint="street address"
         android:inputType="textPostalAddress" />
 
     <EditText
         android:id="@+id/stateField"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/streetAddrField"
-        android:layout_below="@+id/streetAddrField"
-        android:layout_marginTop="11dp"
+
+        android:layout_alignBaseline="@+id/cityField"
+        android:layout_alignBottom="@+id/cityField"
+        android:layout_alignEnd="@+id/streetAddrField"
         android:ems="10"
         android:hint="state"
         android:inputType="textPostalAddress" />
 
     <EditText
         android:id="@+id/cityField"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/stateField"
-        android:layout_below="@+id/stateField"
-        android:layout_marginTop="14dp"
+
+
+        android:layout_alignStart="@+id/streetAddrField"
+        android:layout_below="@+id/streetAddrField"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="city"
         android:inputType="textPostalAddress" />
 
     <EditText
         android:id="@+id/zipField"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+
+
         android:layout_alignStart="@+id/cityField"
         android:layout_below="@+id/cityField"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="zip"
         android:inputType="textPostalAddress" />
@@ -100,9 +113,10 @@
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/zipField"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
         android:onClick="createAccount"
         android:text="Button"
         tools:text="Submit" />
