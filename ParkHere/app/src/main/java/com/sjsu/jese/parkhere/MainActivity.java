@@ -2,8 +2,11 @@ package com.sjsu.jese.parkhere;
 
 import android.content.Intent;
 import android.icu.util.Freezable;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
     FirebaseAuth mAuth;
-
+    private BottomNavigationView mBottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView loggedInAsTextView = (TextView) findViewById(R.id.currUserText);
-
+        mBottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectFragment(item);
+                return true;
+            }
+        });
         mAuth = FirebaseAuth.getInstance();
         loggedInAsTextView.setText("Logged in as: " + mAuth.getCurrentUser().getEmail());
     }
@@ -43,8 +53,25 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
+    private void selectFragment(MenuItem item) {
+
+        // init corresponding fragment
+        switch (item.getItemId()) {
+            case R.id.browse:
+                toBrowsePost();
+                break;
+            case R.id.newPost:
+                toNewPost();
+                break;
+            case R.id.profile:
+                //frag = MenuFragment.newInstance(getString(R.string.text_search),
+                        //getColorFromRes(R.color.color_search));
+                break;
+        }
+    }
+
     // When button id = browsePostBtn clicked takes you to BrowsePostActivity
-    public void toBrowsePost(View view) {
+    public void toBrowsePost() {
         Intent intent = new Intent(this, BrowsePostActivity.class);
         startActivity(intent);
     }
@@ -56,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toNewPost(View view) {
+    public void toNewPost() {
         Intent intent = new Intent(this, NewPostActivity.class);
         startActivity(intent);
     }

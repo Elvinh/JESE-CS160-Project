@@ -106,7 +106,7 @@
             android:layout_marginTop="33dp"
             android:ems="10"
             android:hint="Zip / Postal code"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:text="e.g. 95132" />
 
     </android.support.design.widget.TextInputLayout>

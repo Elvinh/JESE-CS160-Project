@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Daily Rate"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:text="10.00" />
 
     </android.support.design.widget.TextInputLayout>

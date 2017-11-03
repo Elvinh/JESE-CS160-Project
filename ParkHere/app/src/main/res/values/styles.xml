@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -13,4 +13,8 @@
         <item name="colorButtonNormal">@color/md_cyan_200</item>
     </style>
 
+    <style name="BottomNavigation">
+        <item name="android:background">@color/md_cyan_300</item>
+        <item name="itemBackground">@drawable/navigation_bar_item_bg</item>
+    </style>
 </resources>

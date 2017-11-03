@@ -107,7 +107,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="zip"
-        android:inputType="textPostalAddress" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/submitBtn"
