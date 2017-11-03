@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Post;
 
-public class NewPostActivity extends AppCompatActivity implements NewPostGetSizeFragment.OnDataPass{
+public class NewPostActivity extends AppCompatActivity {
     /*protected GeoDataClient mGeoDataClient;
     protected PlaceDetectionClient mPlaceDetectionClient;
     public static final int REQUEST_LOCATION = 99;*/
@@ -56,10 +56,6 @@ public class NewPostActivity extends AppCompatActivity implements NewPostGetSize
 
     }
 
-    @Override
-    public void onDataPass(String data) {
-        Log.d("LOG","hello " + data);
-    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         /*int PLACE_PICKER_REQUEST = 1;
         if (requestCode == PLACE_PICKER_REQUEST) {

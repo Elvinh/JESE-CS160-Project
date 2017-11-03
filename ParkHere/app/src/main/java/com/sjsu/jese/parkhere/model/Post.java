@@ -1,5 +1,6 @@
 package com.sjsu.jese.parkhere.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -65,9 +66,7 @@ public class Post {
         return dateEnd;
     }
 
-    public void setDateEnd(String dateEnd) {
-        this.dateEnd = dateEnd;
-    }
+    public void setDateEnd(String dateEnd) { this.dateEnd = dateEnd; }
 
     public String getCarSize() {
         return carSize;

@@ -56,7 +56,6 @@ public class NewPostConfirmation extends Fragment {
             public void onClick(View v) {
                 progressDialog.show();
                 Post newPost = ((NewPostActivity) getActivity()).newPost;
-                Log.d("Post",  newPost.getTitle() + newPost.getCarSize() + newPost.getDailyRate() + newPost.getDateAvailable() + newPost.getDateEnd());
                 addToDatabase(newPost);
             }
         });

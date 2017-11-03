@@ -16,32 +16,32 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_start_date"
-        android:layout_width="250dp"
+    android:id="@+id/input_layout_start_date"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/questionText"
+    android:layout_marginTop="30dp">
+
+    <EditText
+        android:id="@+id/startDateField"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/questionText"
-        android:layout_marginTop="30dp">
+        android:layout_above="@+id/input_layout_start_date"
+        android:layout_alignEnd="@+id/input_layout_start_date"
+        android:clickable="true"
+        android:ems="10"
+        android:hint="When will your parking space be available?"
+        android:editable="false"
+        android:text="12/15/17" />
 
-        <EditText
-            android:id="@+id/startDateField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/input_layout_start_date"
-            android:layout_alignEnd="@+id/input_layout_start_date"
-            android:clickable="true"
-            android:ems="10"
-            android:hint="When will your parking space be available?"
-            android:editable="false"
-            android:text="Start Date" />
-
-    </android.support.design.widget.TextInputLayout>
+</android.support.design.widget.TextInputLayout>
 
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_end_date"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/input_layout_start_date"
+        android:layout_below="@+id/input_layout_start_time"
         android:layout_marginTop="25dp">
 
         <EditText
@@ -52,9 +52,48 @@
             android:ems="10"
             android:hint="When will your parking space be unavaiable?"
             android:editable="false"
-            android:text="End Date" />
+            android:text="12/25/17" />
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_start_time"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_start_date"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/startTimeField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/input_layout_start_date"
+            android:layout_alignEnd="@+id/input_layout_start_date"
+            android:clickable="true"
+            android:ems="10"
+            android:hint="At what time will it be available?"
+            android:editable="false"
+            android:text="7:00 am" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_end_time"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_end_date"
+        android:layout_marginTop="25dp">
+
+        <EditText
+            android:id="@+id/endTimeField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:ems="10"
+            android:hint="At what time will it be unavaiable?"
+            android:editable="false"
+            android:text="6:30 pm" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/nextBtn"
