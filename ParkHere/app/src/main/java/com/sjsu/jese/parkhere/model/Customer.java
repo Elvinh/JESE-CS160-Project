@@ -6,13 +6,13 @@ package com.sjsu.jese.parkhere.model;
 
 public class Customer {
     private String name;
-    private int phone;
+    private String phone;
     private Address address;
 
     public Customer() {
     }
 
-    public Customer(String name, int phone, Address address) {
+    public Customer(String name, String phone, Address address) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -26,11 +26,11 @@ public class Customer {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -1,6 +1,7 @@
 package com.sjsu.jese.parkhere;
 
 import android.content.Intent;
+import android.icu.util.Freezable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,17 +23,19 @@ import com.sjsu.jese.parkhere.newPost.NewPostActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference myCustomerRef = mRootRef.child("Customers");
-
     private static final String TAG = "MyActivity";
+    FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView loggedInAsTextView = (TextView) findViewById(R.id.currUserText);
+
+        mAuth = FirebaseAuth.getInstance();
+        loggedInAsTextView.setText("Logged in as: " + mAuth.getCurrentUser().getEmail());
     }
 
     @Override
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     // When button id = logoutBtn clicked logouts user and goes to LoginActivity
     public void toLogin(View view) {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

@@ -1,10 +1,12 @@
 package com.sjsu.jese.parkhere.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sjsu.jese.parkhere.MainActivity;
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Customer;
@@ -53,6 +56,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         zipText = (EditText) findViewById(R.id.zipField);
         submitBtn = (Button) findViewById(R.id.submitBtn);
 
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createAccount();
+            }
+        });
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -67,7 +76,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         boolean valid = true;
 
         String email = emailText.getText().toString();
-        if(TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)) {
             emailText.setError("Required.");
             valid = false;
         } else {
@@ -75,17 +84,25 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         String password = passwordText.getText().toString();
-        if(TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)) {
             passwordText.setError("Required.");
             valid = false;
         } else {
             passwordText.setError(null);
         }
 
+        String phoneNum = phoneNumText.getText().toString();
+        if (!android.util.Patterns.PHONE.matcher(phoneNum).matches()) {
+            phoneNumText.setError("Invalid phone number.");
+            valid = false;
+        } else {
+            phoneNumText.setError(null);
+        }
+
         return valid;
     }
 
-    public void createAccount(View view) {
+    public void createAccount() {
         if(!validateForm()) {
             return;
         }
@@ -93,49 +110,55 @@ public class CreateAccountActivity extends AppCompatActivity {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
-        if(true) {
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        String screenName = screenNameText.getText().toString();
-                        int phoneNum = Integer.parseInt(phoneNumText.getText().toString());
-                        String streetAddress = streetAddressText.getText().toString();
-                        String city = cityText.getText().toString();
-                        String state = stateText.getText().toString();
-                        int zip = Integer.parseInt(zipText.getText().toString());
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Creating account...");
+        progressDialog.show();
 
-                        Customer customer = new Customer(screenName, phoneNum,
-                                new Address(streetAddress,city,state,zip,"US"));
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String screenName = screenNameText.getText().toString();
+                    String phoneNum = phoneNumText.getText().toString();
+                    String streetAddress = streetAddressText.getText().toString();
+                    String city = cityText.getText().toString();
+                    String state = stateText.getText().toString();
+                    int zip = Integer.parseInt(zipText.getText().toString());
 
-                        // add to Firebase database
-                        customersRef.child(user.getUid()).setValue(customer);
+                    Customer customer = new Customer(screenName, phoneNum,
+                            new Address(streetAddress,city,state,zip,"US"));
 
-                       // set values for screenname and photourl
-                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(screenName)
-                                .setPhotoUri(Uri.parse(""))
-                                .build();
+                    // add to Firebase database
+                    customersRef.child(user.getUid()).setValue(customer);
 
-                        user.updateProfile(profileUpdates)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                        }
+                   // set values for screenname and photourl
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(screenName)
+                            .setPhotoUri(Uri.parse(""))
+                            .build();
+
+                    user.updateProfile(profileUpdates)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
                                     }
-                                });
+                                }
+                            });
 
-                        toLogin();
-                    }
+                    toLogin();
                 }
-            });
-        }
+                else {
+                    progressDialog.dismiss();
+                }
+            }
+        });
     }
 
     private void toLogin() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
