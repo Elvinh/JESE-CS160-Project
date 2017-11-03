@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.model.Post;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -100,6 +101,10 @@ public class NewPostGetDateFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Post newPost = ((NewPostActivity)getActivity()).newPost;
+                newPost.setDateAvailable(startDateText.getText().toString());
+                newPost.setDateEnd(endDateText.getText().toString());
+
                 NewPostGetAddressFragment fragment = new NewPostGetAddressFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -115,6 +120,7 @@ public class NewPostGetDateFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         startDateText.setText(sdf.format(startDateCalender.getTime()));
+
     }
     private void updateEndDate() {
         String myFormat = "MM/dd/yy"; //In which you need put here

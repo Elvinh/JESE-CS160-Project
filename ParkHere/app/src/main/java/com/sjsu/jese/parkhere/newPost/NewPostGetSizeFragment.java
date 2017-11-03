@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.model.Post;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,6 +58,8 @@ public class NewPostGetSizeFragment extends Fragment {
                 // An item was selected. You can retrieve the selected item using
                 // parent.getItemAtPosition(pos)
                 passData(parent.getItemAtPosition(pos).toString());
+                Post newPost = ((NewPostActivity)getActivity()).newPost;
+                newPost.setCarSize(parent.getItemAtPosition(pos).toString());
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -67,7 +70,9 @@ public class NewPostGetSizeFragment extends Fragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                passData(rateField.getText().toString());
+                //passData(rateField.getText().toString());
+                Post newPost = ((NewPostActivity)getActivity()).newPost;
+                newPost.setDailyRate(Double.parseDouble(rateField.getText().toString()));
                 NewPostGetDateFragment fragment = new NewPostGetDateFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

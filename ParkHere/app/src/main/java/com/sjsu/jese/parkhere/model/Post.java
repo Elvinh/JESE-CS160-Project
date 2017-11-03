@@ -10,15 +10,15 @@ public class Post {
     private Address address;
     private String ownerUid;
     private double dailyRate;
-    private Date dateAvailable;
-    private Date dateEnd;
+    private String dateAvailable;
+    private String dateEnd;
     String carSize;
     String shortDescription;
     String title;
 
     public Post() {}
 
-    public Post(Address address, String ownerUid, double dailyRate, Date dateAvailable, Date dateEnd, String carSize, String shortDescription, String title) {
+    public Post(Address address, String ownerUid, double dailyRate, String dateAvailable, String dateEnd, String carSize, String shortDescription, String title) {
         this.address = address;
         this.ownerUid = ownerUid;
         this.dailyRate = dailyRate;
@@ -45,14 +45,6 @@ public class Post {
         this.ownerUid = ownerUid;
     }
 
-    public double getBaseRatePay() {
-        return dailyRate;
-    }
-
-    public void setBaseRatePay(double dailyRate) {
-        this.dailyRate = dailyRate;
-    }
-
     public double getDailyRate() {
         return dailyRate;
     }
@@ -61,19 +53,19 @@ public class Post {
         this.dailyRate = dailyRate;
     }
 
-    public Date getDateAvailable() {
+    public String getDateAvailable() {
         return dateAvailable;
     }
 
-    public void setDateAvailable(Date dateAvailable) {
+    public void setDateAvailable(String dateAvailable) {
         this.dateAvailable = dateAvailable;
     }
 
-    public Date getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 

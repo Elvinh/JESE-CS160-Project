@@ -22,7 +22,7 @@
         android:layout_marginTop="30dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/titleField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -50,7 +50,7 @@
         android:layout_marginTop="30dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/descriptionField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

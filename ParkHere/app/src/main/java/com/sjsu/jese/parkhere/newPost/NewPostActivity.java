@@ -1,5 +1,6 @@
 package com.sjsu.jese.parkhere.newPost;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import android.support.v4.app.FragmentManager;
@@ -7,19 +8,25 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.model.Post;
 
 public class NewPostActivity extends AppCompatActivity implements NewPostGetSizeFragment.OnDataPass{
     /*protected GeoDataClient mGeoDataClient;
     protected PlaceDetectionClient mPlaceDetectionClient;
     public static final int REQUEST_LOCATION = 99;*/
     private static final String TAG = "Location";
+    protected Post newPost;
+    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
+
+        newPost = new Post();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -48,6 +55,21 @@ public class NewPostActivity extends AppCompatActivity implements NewPostGetSize
         }*/
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        //txt = (TextView) findViewById(R.id.textView);
+        Log.d("hey", "HELLO");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        NewPostConfirmation fragment = new NewPostConfirmation();
+        fragmentTransaction.add(R.id.newPost, fragment);
+        fragmentTransaction.commit();
+    }
+
     @Override
     public void onDataPass(String data) {
         Log.d("LOG","hello " + data);
@@ -85,5 +107,8 @@ public class NewPostActivity extends AppCompatActivity implements NewPostGetSize
 
         }*/
 
+    }
+    protected Post getNewPost() {
+        return newPost;
     }
 }
