@@ -28,6 +28,7 @@ public class Post {
         this.carSize = carSize;
         this.shortDescription = shortDescription;
         this.title = title;
+        this.ownerUid = ownerUid;
     }
 
     public Address getAddress() {

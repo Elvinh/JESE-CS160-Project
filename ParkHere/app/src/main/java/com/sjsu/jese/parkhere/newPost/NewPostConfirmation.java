@@ -56,6 +56,7 @@ public class NewPostConfirmation extends Fragment {
             public void onClick(View v) {
                 progressDialog.show();
                 Post newPost = ((NewPostActivity) getActivity()).newPost;
+                newPost.setOwnerUid(currUser.getUid());
                 addToDatabase(newPost);
             }
         });
