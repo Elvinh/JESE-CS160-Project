@@ -57,20 +57,6 @@ public class NewPostActivity extends AppCompatActivity implements NewPostGetSize
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        //txt = (TextView) findViewById(R.id.textView);
-        Log.d("hey", "HELLO");
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        NewPostConfirmation fragment = new NewPostConfirmation();
-        fragmentTransaction.add(R.id.newPost, fragment);
-        fragmentTransaction.commit();
-    }
-
-    @Override
     public void onDataPass(String data) {
         Log.d("LOG","hello " + data);
     }

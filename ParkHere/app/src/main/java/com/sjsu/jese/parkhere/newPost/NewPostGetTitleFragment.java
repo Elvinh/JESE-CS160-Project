@@ -43,7 +43,10 @@ public class NewPostGetTitleFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("address", titleField.getText().toString() + descriptionField.getText().toString());
                 Post newPost = ((NewPostActivity)getActivity()).newPost;
-               newPost.setTitle(titleField.getText().toString());
+
+                newPost.setTitle(titleField.getText().toString());
+                newPost.setShortDescription(descriptionField.getText().toString());
+
                 NewPostConfirmation fragment = new NewPostConfirmation();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
