@@ -67,9 +67,11 @@ public class NewPostGetAddressFragment extends Fragment {
             public void onClick(View v) {
                 if(validateForm()) {
                     Log.d("address", countryField.getText().toString() + stateField.getText().toString() + zipField.getText().toString());
+
                     Post newPost = ((NewPostActivity) getActivity()).newPost;
                     newPost.setAddress(new Address(streetField.getText().toString(), cityField.getText().toString(),
                             stateField.getText().toString(), Integer.parseInt(zipField.getText().toString()), countryField.getText().toString()));
+
                     NewPostGetTitleFragment fragment = new NewPostGetTitleFragment();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -86,41 +88,33 @@ public class NewPostGetAddressFragment extends Fragment {
 
         String field = countryField.getText().toString();
         if (TextUtils.isEmpty(field)) {
-            //emailField.setError("Required.");
             countryLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             countryLayout.setError(null);
         }
 
         field = streetField.getText().toString();
         if (TextUtils.isEmpty(field)) {
-            //emailField.setError("Required.");
             streetLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             streetLayout.setError(null);
         }
 
         field = cityField.getText().toString();
         if (TextUtils.isEmpty(field)) {
-            //emailField.setError("Required.");
             cityLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             cityLayout.setError(null);
         }
 
         field = zipField.getText().toString();
         if (TextUtils.isEmpty(field)) {
-            //emailField.setError("Required.");
             zipLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             zipLayout.setError(null);
         }
 

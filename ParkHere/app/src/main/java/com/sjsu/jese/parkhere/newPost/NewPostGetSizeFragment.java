@@ -89,11 +89,9 @@ public class NewPostGetSizeFragment extends Fragment {
 
         String rate = rateField.getText().toString();
         if (TextUtils.isEmpty(rate)) {
-            //emailField.setError("Required.");
             inputLayoutRate.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             inputLayoutRate.setError(null);
         }
 

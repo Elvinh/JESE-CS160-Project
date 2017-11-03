@@ -214,7 +214,7 @@ public class NewPostGetDateFragment extends Fragment {
     }
 
     private void updateStartTime() {
-        String myFormat = "HH:mm a"; //In which you need put here
+        String myFormat = "HH:mm a";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         startTimeText.setText(sdf.format(startDateCalender.getTime()));
@@ -222,7 +222,7 @@ public class NewPostGetDateFragment extends Fragment {
     }
 
     private void updateEndTime() {
-        String myFormat = "HH:mm a"; //In which you need put here
+        String myFormat = "HH:mm a";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         endTimeText.setText(sdf.format(endDateCalender.getTime()));
@@ -233,41 +233,33 @@ public class NewPostGetDateFragment extends Fragment {
 
         String date = startDateText.getText().toString();
         if (TextUtils.isEmpty(date)) {
-            //emailField.setError("Required.");
             startDateLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             startDateLayout.setError(null);
         }
 
         date = endDateText.getText().toString();
         if (TextUtils.isEmpty(date)) {
-            //emailField.setError("Required.");
             endDateLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             endDateLayout.setError(null);
         }
 
         date = startTimeText.getText().toString();
         if (TextUtils.isEmpty(date)) {
-            //emailField.setError("Required.");
             startTimeLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             startTimeLayout.setError(null);
         }
 
         date = endDateText.getText().toString();
         if (TextUtils.isEmpty(date)) {
-            //emailField.setError("Required.");
             endTimeLayout.setError("Required.");
             valid = false;
         } else {
-            //emailField.setError(null);
             endTimeLayout.setError(null);
         }
 
