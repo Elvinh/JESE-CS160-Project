@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.icu.util.Freezable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import com.sjsu.jese.parkhere.login.LoginActivity;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Customer;
 import com.sjsu.jese.parkhere.newPost.NewPostActivity;
+import com.sjsu.jese.parkhere.profile.ProfileViewFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView loggedInAsTextView = (TextView) findViewById(R.id.currUserText);
+        //TextView loggedInAsTextView = (TextView) findViewById(R.id.currUserText);
         mBottomNav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         mBottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mAuth = FirebaseAuth.getInstance();
-        loggedInAsTextView.setText("Logged in as: " + mAuth.getCurrentUser().getEmail());
     }
 
     @Override
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void selectFragment(MenuItem item) {
-
+        ProfileViewFragment frag = new ProfileViewFragment();
         // init corresponding fragment
         switch (item.getItemId()) {
             case R.id.browse:
@@ -66,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.profile:
                 //frag = MenuFragment.newInstance(getString(R.string.text_search),
                         //getColorFromRes(R.color.color_search));
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.container, frag, frag.getTag());
+                ft.commit();
                 break;
         }
     }
@@ -76,12 +80,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // When button id = logoutBtn clicked logouts user and goes to LoginActivity
-    public void toLogin(View view) {
-        mAuth.signOut();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
+
 
     public void toNewPost() {
         Intent intent = new Intent(this, NewPostActivity.class);
