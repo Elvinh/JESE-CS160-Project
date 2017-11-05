@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/post_detail_image"
+            android:layout_width="400sp"
+            android:layout_height="200sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@mipmap/driveway3" />
+
+        <TextView
+            android:id="@+id/dailyRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="1dp"
+            android:layout_marginStart="29dp"
+            android:text="$5/hour"
+            android:textSize="20sp"
+            android:textColor="@color/md_black_1000"
+            />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:background="@color/md_indigo_300"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5 mins walk to Great America"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cardview_dark_background"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="5dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        >
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@mipmap/location"
+            android:clickable="true"
+
+            />
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:text="21 Great America Dr, 95131"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/book_button"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/md_pink_400"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:text="BOOK"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/shortDescription"
+                android:layout_gravity="left"
+                android:padding="3dip"
+                android:text="Some details about place" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="-walking distance to Great America" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/access"
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="-easy access to parking" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/carSize"
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="- Parking available for any size vehicles" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="-Available at cheap price" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="-Cancellation available within 24 hours" />
+        </TableRow>
+
+
+
+    </TableLayout>
+
+
+</LinearLayout>

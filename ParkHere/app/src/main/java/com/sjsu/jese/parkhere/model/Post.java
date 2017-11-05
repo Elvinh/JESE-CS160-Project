@@ -1,8 +1,5 @@
 package com.sjsu.jese.parkhere.model;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * Created by Elton on 10/29/2017.
  */
@@ -11,25 +8,23 @@ public class Post {
     private Address address;
     private String ownerUid;
     private double dailyRate;
-    private String dateAvailable;
-    private String dateEnd;
     String carSize;
     String shortDescription;
     String title;
-    String id;
+    String access;
+
 
     public Post() {}
 
-    public Post(Address address, String ownerUid, double dailyRate, String dateAvailable, String dateEnd, String carSize, String shortDescription, String title) {
+    public Post(Address address, String ownerUid, double dailyRate, String carSize, String shortDescription, String title, String access) {
         this.address = address;
-        this.ownerUid = ownerUid;
         this.dailyRate = dailyRate;
-        this.dateAvailable = dateAvailable;
-        this.dateEnd = dateEnd;
         this.carSize = carSize;
         this.shortDescription = shortDescription;
         this.title = title;
+        this.access= access;
         this.ownerUid = ownerUid;
+
     }
 
     public Address getAddress() {
@@ -40,14 +35,6 @@ public class Post {
         this.address = address;
     }
 
-    public String getOwnerUid() {
-        return ownerUid;
-    }
-
-    public void setOwnerUid(String ownerUid) {
-        this.ownerUid = ownerUid;
-    }
-
     public double getDailyRate() {
         return dailyRate;
     }
@@ -56,19 +43,6 @@ public class Post {
         this.dailyRate = dailyRate;
     }
 
-    public String getDateAvailable() {
-        return dateAvailable;
-    }
-
-    public void setDateAvailable(String dateAvailable) {
-        this.dateAvailable = dateAvailable;
-    }
-
-    public String getDateEnd() {
-        return dateEnd;
-    }
-
-    public void setDateEnd(String dateEnd) { this.dateEnd = dateEnd; }
 
     public String getCarSize() {
         return carSize;
@@ -86,6 +60,14 @@ public class Post {
         this.shortDescription = shortDescription;
     }
 
+    public String getOwnerUid() {
+        return ownerUid;
+    }
+
+    public void setOwnerUid(String ownerUid) {
+        this.ownerUid = ownerUid;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -94,11 +76,12 @@ public class Post {
         this.title = title;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getaccess() {
+        return access;
     }
 
-    public String getId() {
-        return id;
+    public void setAccess(String access) {
+        this.access = access;
     }
+
 }
