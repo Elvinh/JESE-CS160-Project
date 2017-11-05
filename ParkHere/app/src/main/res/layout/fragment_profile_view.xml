@@ -73,3 +73,4 @@
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_directions_walk_black_24dp" />
     </RelativeLayout>
+</RelativeLayout>
