@@ -16,6 +16,7 @@ public class Post {
     String carSize;
     String shortDescription;
     String title;
+    String id;
 
     public Post() {}
 
@@ -91,5 +92,13 @@ public class Post {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }
