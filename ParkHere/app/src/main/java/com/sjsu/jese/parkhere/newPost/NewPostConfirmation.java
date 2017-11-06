@@ -125,7 +125,8 @@ public class NewPostConfirmation extends Fragment {
         progressDialog.dismiss();
         Toast.makeText(getActivity(), "Post Creation Successful",
                 Toast.LENGTH_SHORT).show();
-        ((NewPostActivity) getActivity()).onBackPressed();
+        //((NewPostActivity) getActivity()).onBackPressed();
+        getActivity().finish();
     }
 
 }
