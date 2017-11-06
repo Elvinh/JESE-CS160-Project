@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
     card_view:cardCornerRadius="4dp"
     android:layout_margin="20dp"
     android:elevation="10dp"
@@ -19,13 +19,14 @@
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
+        android:textSize="20dp"
         />
     <TextView
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40dp"
+        android:textSize="15dp"
+        android:background="@color/colorPrimaryDark"
         />
 
   </LinearLayout>

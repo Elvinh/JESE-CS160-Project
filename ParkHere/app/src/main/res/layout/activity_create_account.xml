@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sjsu.jese.parkhere.login.ForgotPasswordActivity"
-    android:background="#e27e5d">
+    tools:context="com.sjsu.jese.parkhere.login.ForgotPasswordActivity">
 
     <ImageView
         android:id="@+id/logo"

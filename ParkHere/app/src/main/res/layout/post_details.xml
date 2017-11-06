@@ -14,10 +14,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:src="@mipmap/driveway" />
+            android:src="@mipmap/driveway1" />
 
         <TextView
-            android:id="@+id/detail_view_price"
+            android:id="@+id/dailyRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -42,7 +42,7 @@
         />
 
     <TextView
-        android:id="@+id/post_detail_title"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="5 mins walk to Levis Stadium"
@@ -76,11 +76,12 @@
 
              />
          <TextView
+             android:id="@+id/address"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginLeft="20dp"
              android:textSize="20sp"
-             android:text="1234 Fake Ave, San Jose, 95123"
+             android:text="Fake Ave, Santa Clara, 95123"
              />
 
 
@@ -103,67 +104,61 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="1"
-        >
+        android:stretchColumns="1">
+
         <TableRow>
+
             <TextView
-                android:text="Some details about place"
+                android:id="@+id/shortDescription"
+                android:layout_gravity="left"
                 android:padding="3dip"
-                android:layout_gravity="right"/>
+                android:text="Some details about place" />
         </TableRow>
 
         <TableRow>
 
             <TextView
+                android:gravity="left"
                 android:padding="3dip"
-                android:text="Some more details about the place"
-                android:gravity="right"
-                />
+                android:text="-Located near Levis Stadium, Santa Clara" />
         </TableRow>
 
         <TableRow>
+
             <TextView
-                android:text="Some more details about the place"
-                android:gravity="right"
+                android:id="@+id/access"
+                android:gravity="left"
                 android:padding="3dip"
-                android:layout_gravity="center"/>
+                android:text="-Easy access to the parking space" />
         </TableRow>
 
         <TableRow>
+
             <TextView
-                android:text="Some more details about the place"
-                android:gravity="right"
+                android:id="@+id/carSize"
+                android:gravity="left"
                 android:padding="3dip"
-                android:layout_gravity="center"/>
+                android:text="- Parking available for any vehicle size" />
         </TableRow>
 
         <TableRow>
+
             <TextView
-                android:text="Some more details about the place"
-                android:gravity="right"
-                android:padding="3dip" />
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="-Available at cheap price" />
         </TableRow>
 
         <TableRow>
+
             <TextView
-                android:text="Some more details about the place"
-                android:gravity="right"
-                android:padding="3dip" />
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="-Cancellation available within 24 hours" />
         </TableRow>
 
-        <TableRow>
-            <TextView
-                android:text="Some more details about the place"
-                android:gravity="right"
-                android:padding="3dip" />
-        </TableRow>
 
-        <TableRow>
-            <TextView
-                android:text="Some more details about the place"
-                android:gravity="right"
-                android:padding="3dip" />
-        </TableRow>
+
     </TableLayout>
 
 
