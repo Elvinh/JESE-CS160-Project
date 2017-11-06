@@ -12,7 +12,8 @@ public class Post {
     String shortDescription;
     String title;
     String access;
-
+    String dateAvailable;
+    String dateEnd;
 
     public Post() {}
 
@@ -29,6 +30,22 @@ public class Post {
 
     public Address getAddress() {
         return address;
+    }
+
+    public String getDateAvailable() {
+        return dateAvailable;
+    }
+
+    public void setDateAvailable(String dateAvailable) {
+        this.dateAvailable = dateAvailable;
+    }
+
+    public String getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(String dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     public void setAddress(Address address) {
@@ -76,7 +93,7 @@ public class Post {
         this.title = title;
     }
 
-    public String getaccess() {
+    public String getAccess() {
         return access;
     }
 
