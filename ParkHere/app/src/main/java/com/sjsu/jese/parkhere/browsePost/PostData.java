@@ -53,7 +53,7 @@ public class PostData {
 
     public Post getPostByID(String id){
         for (Post p: mPosts) {
-            if(p.getId().equals(id))
+            //if(p.getId().equals(id))
                 return p;
         }
         return null;
