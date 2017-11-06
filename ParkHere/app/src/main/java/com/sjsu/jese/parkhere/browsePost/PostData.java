@@ -21,21 +21,33 @@ public class PostData {
     private DatabaseReference mFirebaseRef;
     private ArrayList<Post> mPosts;
 
+    private final ValueEventListener mValueEventListener=new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                Post post = singleSnapshot.getValue(Post.class);
+                mPosts.add(post);
+                Log.d("postdata", "getAllData: "+ mPosts.size());
+            }
+
+            Log.d("postdata", "called the listner");
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
+
+
+
+
     public PostData() {
         mPosts = new ArrayList<>();
-        mFirebaseRef= FirebaseDatabase.getInstance().getReference().child("Posts");
-       mFirebaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
-               getAllData(dataSnapshot);
-           }
+        mFirebaseRef= FirebaseDatabase.getInstance().getReference();
+        mFirebaseRef.child("Posts").addListenerForSingleValueEvent(mValueEventListener);
 
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });
-
+        Log.d("postdata", "created everything");
     }
 
     private void getAllData(DataSnapshot dataSnapshot){
@@ -43,7 +55,7 @@ public class PostData {
             Post post = singleSnapshot.getValue(Post.class);
             mPosts.add(post);
         }
-        Log.d("poop", String.valueOf(mPosts.size()));
+        Log.d("postdata", "getAllData: "+mPosts.size());
     }
 
 

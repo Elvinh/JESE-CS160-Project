@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,18 +29,18 @@ import java.util.HashMap;
  */
 
 public class BrowsePostFragment extends Fragment {
-    private RecyclerView rv;
+    private RecyclerView mRecyclerView;
     private PostAdapter mAdapter;
-    private ArrayList<String> a= new ArrayList<>();
+    private PostData mPosts;
 
     
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_browse_post, container, false);
-        rv = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //updateUI();
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
@@ -54,7 +55,7 @@ public class BrowsePostFragment extends Fragment {
                      values.add(post);
                 }
 
-                rv.setAdapter(new RecyclerViewAdapter(values));
+                mRecyclerView.setAdapter(new RecyclerViewAdapter(values));
             }
 
             @Override
@@ -62,46 +63,42 @@ public class BrowsePostFragment extends Fragment {
 
             }
         });
+/*
+        mPosts= new PostData();
+        mAdapter= new PostAdapter(mPosts.getPosts());
+        Log.e("browse","created browse");
+        Log.e("browse", String.valueOf(mPosts.getPosts().size()));
+
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+>>>>>>> origin/master*/
         return v;
     }
 
 
-    public void updateUI(){
-
-        a.add("hello");
-        a.add("why");
-        a.add("test");
-        a.add("hello");
-        a.add("why");
-        a.add("test");
-        a.add("hello");
-        a.add("why");
-        a.add("test");
-        a.add("hello");
-        a.add("why");
-        a.add("test");
-        mAdapter=new PostAdapter(a);
-        rv.setAdapter(mAdapter);
-    }
 
     private class PostHolder extends RecyclerView.ViewHolder{
-       private  CardView cv;
-       private TextView tv;
+       private TextView mAddress;
+       private TextView mPrice;
 
         public PostHolder(View itemView) {
             super(itemView);
-            cv=(CardView) itemView.findViewById(R.id.card_view);
-            tv=(TextView) itemView.findViewById(R.id.address);
+            mAddress=(TextView) itemView.findViewById(R.id.address);
+            //mPrice=(TextView) itemView.findViewById(R.id.price);
         }
-        public void bindPost(String i){
-            tv.setText(i);
+        public void bindPost(Post p){
+            mAddress.setText(p.getAddress().toString());
+            mPrice.setText(Double.toString(p.getDailyRate()));
         }
     }
 
-    private class PostAdapter extends RecyclerView.Adapter<PostHolder>{
-        private ArrayList< String> mPost;
 
-        public PostAdapter(ArrayList<String> posts){
+    private class PostAdapter extends RecyclerView.Adapter<PostHolder> implements View.OnClickListener{
+        private ArrayList< Post> mPost;
+
+        public PostAdapter(ArrayList<Post> posts){
             mPost=posts;
         }
 
@@ -120,6 +117,11 @@ public class BrowsePostFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mPost.size();
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 }
