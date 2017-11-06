@@ -11,7 +11,8 @@ public class Post {
     String carSize;
     String shortDescription;
     String title;
-    String access;
+    String mDateAvailable;
+    String mDateEnd;
 
 
     public Post() {}
@@ -22,7 +23,6 @@ public class Post {
         this.carSize = carSize;
         this.shortDescription = shortDescription;
         this.title = title;
-        this.access= access;
         this.ownerUid = ownerUid;
 
     }
@@ -76,12 +76,11 @@ public class Post {
         this.title = title;
     }
 
-    public String getaccess() {
-        return access;
+    public void setDateAvailable(String dateAvailable) {
+        mDateAvailable = dateAvailable;
     }
 
-    public void setAccess(String access) {
-        this.access = access;
+    public void setDateEnd(String dateEnd) {
+        mDateEnd = dateEnd;
     }
-
 }
