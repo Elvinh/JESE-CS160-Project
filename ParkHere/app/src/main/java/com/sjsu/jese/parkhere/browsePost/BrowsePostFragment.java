@@ -1,5 +1,6 @@
 package com.sjsu.jese.parkhere.browsePost;
 
+import android.icu.util.Freezable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,9 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.model.Post;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by evank on 10/21/2017.
@@ -30,8 +38,30 @@ public class BrowsePostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_browse_post, container, false);
         rv = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
+        rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        updateUI();
+        //updateUI();
+
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mPostsRef = mDatabase.getReference("Posts");
+
+        mPostsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Post> values = new ArrayList<>();
+                for(DataSnapshot child: dataSnapshot.getChildren()) {
+                    Post post = child.getValue(Post.class);
+                     values.add(post);
+                }
+
+                rv.setAdapter(new RecyclerViewAdapter(values));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         return v;
     }
 
@@ -67,8 +97,6 @@ public class BrowsePostFragment extends Fragment {
             tv.setText(i);
         }
     }
-
-
 
     private class PostAdapter extends RecyclerView.Adapter<PostHolder>{
         private ArrayList< String> mPost;
