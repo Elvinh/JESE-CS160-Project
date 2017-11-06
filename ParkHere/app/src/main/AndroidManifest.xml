@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sjsu.jese.parkhere">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".login.LoginActivity"
-            android:screenOrientation= "portrait">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,12 +25,13 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".browsePost.BrowsePostActivity" />
         <activity android:name=".login.CreateAccountActivity" />
-        <activity android:name=".newPost.NewPostActivity"></activity>
+        <activity android:name=".newPost.NewPostActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDj3cYi8ucR1H291GL7Z4Ol36-kaKwyLhU"/>
+            android:value="AIzaSyDj3cYi8ucR1H291GL7Z4Ol36-kaKwyLhU" />
 
+        <activity android:name=".postDetails.PostDetailActivity"></activity>
     </application>
 
 </manifest>

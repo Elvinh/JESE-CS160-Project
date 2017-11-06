@@ -1,6 +1,8 @@
 package com.sjsu.jese.parkhere.browsePost;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Post;
+import com.sjsu.jese.parkhere.postDetails.PostDetailActivity;
 
 import java.util.ArrayList;
 
@@ -19,8 +22,10 @@ import java.util.ArrayList;
 
 class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private ArrayList<Post> posts;
+    private Context context;
 
-    RecyclerViewAdapter(ArrayList<Post> values) {
+    RecyclerViewAdapter(Context context, ArrayList<Post> values) {
+        this.context = context;
         this.posts = values;
     }
 
@@ -53,6 +58,8 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
                @Override
                 public void onClick(View v) {
                     Log.d("Title", currPost.getTitle());
+                   Intent toPostDetails = new Intent(context, PostDetailActivity.class);
+                   context.startActivity(toPostDetails);
                }
             });
         }

@@ -54,7 +54,7 @@ public class BrowsePostFragment extends Fragment {
                      values.add(post);
                 }
 
-                mRecyclerView.setAdapter(new RecyclerViewAdapter(values));
+                mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), values));
             }
 
             @Override
