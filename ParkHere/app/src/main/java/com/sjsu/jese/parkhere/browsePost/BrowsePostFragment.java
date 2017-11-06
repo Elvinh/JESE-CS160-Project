@@ -41,7 +41,6 @@ public class BrowsePostFragment extends Fragment {
         mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //updateUI();
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mPostsRef = mDatabase.getReference("Posts");
@@ -73,7 +72,7 @@ public class BrowsePostFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
->>>>>>> origin/master*/
+*/
         return v;
     }
 
