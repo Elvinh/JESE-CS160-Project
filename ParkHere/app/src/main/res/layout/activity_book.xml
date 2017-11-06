@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sjsu.jese.parkhere.Book.BookActivity"
+    android:id="@+id/book_button"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:text="When would you like to use the space"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_serviceDate"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/questionText"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/ServiceDateField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/input_layout_serviceDate"
+            android:layout_alignEnd="@+id/input_layout_serviceDate"
+            android:clickable="true"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Date you would like to use"
+            android:text="12/15/17" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_end_date"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_start_time"
+        android:layout_marginTop="25dp">
+
+        <EditText
+            android:id="@+id/endTimeField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:editable="false"
+            android:ems="10"
+            android:hint="End time"
+            android:text="4:00 pm " />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_start_time"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout_serviceDate"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/startTimeField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/input_layout_serviceDate"
+            android:layout_alignEnd="@+id/input_layout_serviceDate"
+            android:clickable="true"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Start Time"
+            android:text="7:00 am" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/questionText"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="34dp"
+        android:text="Submit" />
+
+</RelativeLayout>
