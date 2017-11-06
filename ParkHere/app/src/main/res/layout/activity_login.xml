@@ -62,7 +62,9 @@
             android:layout_alignStart="@+id/input_layout_password"
             android:layout_below="@+id/input_layout_password"
             android:layout_marginTop="37dp"
-            android:text="Sign In" />
+            android:text="Sign In"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/md_white_1000"/>
 
         <TextView
             android:id="@+id/forgotPassTextView"
