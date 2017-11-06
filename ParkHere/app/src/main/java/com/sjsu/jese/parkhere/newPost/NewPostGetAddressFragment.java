@@ -76,6 +76,7 @@ public class NewPostGetAddressFragment extends Fragment {
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.newPost, fragment);
+                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
             }

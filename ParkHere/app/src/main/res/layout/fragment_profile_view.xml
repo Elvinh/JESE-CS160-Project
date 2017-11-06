@@ -71,5 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/postsText"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_directions_walk_black_24dp" />
+            android:src="@drawable/ic_chrome_reader_mode_black_24dp" />
     </RelativeLayout>
+</RelativeLayout>
