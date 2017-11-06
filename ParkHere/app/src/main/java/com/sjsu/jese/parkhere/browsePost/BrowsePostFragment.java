@@ -51,6 +51,7 @@ public class BrowsePostFragment extends Fragment {
                 ArrayList<Post> values = new ArrayList<>();
                 for(DataSnapshot child: dataSnapshot.getChildren()) {
                     Post post = child.getValue(Post.class);
+                    post.setUid(child.getKey());
                      values.add(post);
                 }
 

@@ -115,22 +115,8 @@
                 android:text="Some details about place" />
         </TableRow>
 
-        <TableRow>
 
-            <TextView
-                android:gravity="left"
-                android:padding="3dip"
-                android:text="-Located near Levis Stadium, Santa Clara" />
-        </TableRow>
 
-        <TableRow>
-
-            <TextView
-                android:id="@+id/access"
-                android:gravity="left"
-                android:padding="3dip"
-                android:text="-Easy access to the parking space" />
-        </TableRow>
 
         <TableRow>
 
@@ -141,25 +127,22 @@
                 android:text="- Parking available for any vehicle size" />
         </TableRow>
 
-        <TableRow>
 
-            <TextView
-                android:gravity="left"
-                android:padding="3dip"
-                android:text="-Available at cheap price" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:gravity="left"
-                android:padding="3dip"
-                android:text="-Cancellation available within 24 hours" />
-        </TableRow>
 
 
 
     </TableLayout>
 
+    <TextView
+        android:id="@+id/startDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available from: " />
+
+    <TextView
+        android:id="@+id/endDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ends: " />
 
 </LinearLayout>

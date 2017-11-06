@@ -11,8 +11,9 @@ public class Post {
     String carSize;
     String shortDescription;
     String title;
-    String mDateAvailable;
-    String mDateEnd;
+    String dateAvailable;
+    String dateEnd;
+    private String uid;
 
 
     public Post() {}
@@ -29,6 +30,14 @@ public class Post {
 
     public Address getAddress() {
         return address;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public void setAddress(Address address) {
@@ -77,10 +86,10 @@ public class Post {
     }
 
     public void setDateAvailable(String dateAvailable) {
-        mDateAvailable = dateAvailable;
+        this.dateAvailable = dateAvailable;
     }
 
     public void setDateEnd(String dateEnd) {
-        mDateEnd = dateEnd;
+        this.dateEnd = dateEnd;
     }
 }

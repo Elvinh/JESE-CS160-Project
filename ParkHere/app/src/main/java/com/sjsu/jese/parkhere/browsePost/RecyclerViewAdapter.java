@@ -59,6 +59,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
                 public void onClick(View v) {
                     Log.d("Title", currPost.getTitle());
                    Intent toPostDetails = new Intent(context, PostDetailActivity.class);
+                   toPostDetails.putExtra("POST_ID", currPost.getUid());
                    context.startActivity(toPostDetails);
                }
             });
