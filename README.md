@@ -1,2 +1,4 @@
 # JESE-CS160-Project
-Semester Project for SJSU CS 160. By Sandeep, Evan Kardos, Elton Vinh and Jerry Gaines
+Android Application. List your parking spaces for others to use and make money.
+
+By Sandeep, Evan Kardos, Elton Vinh and Jerry Gaines
