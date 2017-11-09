@@ -16,13 +16,17 @@ import static org.junit.Assert.*;
 /**
  * Instrumentation test, which will execute on an Android device.
  *
- * tests whether the post was created
+ * tests whether the post was created, first create a post then
+ * assert testPostID is in firebase.post
  *
  */
 @RunWith(AndroidJUnit4.class)
 public class createPostTest {
+
     @Test
     public void useAppContext() throws Exception {
+        //create post
+
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
