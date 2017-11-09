@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="70dp"
-        android:text="When would you like to use the space"
+        android:text="When would you like to use the space?"
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <android.support.design.widget.TextInputLayout
