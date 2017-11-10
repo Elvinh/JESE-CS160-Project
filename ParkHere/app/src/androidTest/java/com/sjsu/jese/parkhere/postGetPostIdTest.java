@@ -25,15 +25,17 @@ import static org.junit.Assert.*;
  *
  */
 @RunWith(AndroidJUnit4.class)
-public class createPostTest {
+public class postGetPostIdTest {
 
     @Test
-    public void useAppContext() throws Exception {
+    public void getPostID() throws Exception {
         //create post
 
         Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
         Post p = new Post(addr, "000000000", 10.0,"Sedan", "roomy fit, street parking", "Park in San Jose no hassle", "easy");
-        assertEquals(addr+ "", p.getAddress() + "");
+        PostData pd= new PostData();
+        Post newp = pd.getPostByID("000000000");
+        assertEquals(newp+ "", p + "");
         // Context of the app under test.
         //Context appContext = InstrumentationRegistry.getTargetContext();
 

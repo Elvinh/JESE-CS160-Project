@@ -4,6 +4,9 @@ package com.sjsu.jese.parkhere;
  * Created by jerry on 11/9/17.
  */
 
+import com.sjsu.jese.parkhere.model.Address;
+import com.sjsu.jese.parkhere.model.Post;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,9 +17,12 @@ import static org.junit.Assert.*;
  *
  * use mock post create change price check its as expected
  */
+
 public class postPriceTest {
     @Test
-    public void postPrice_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void postPriceTest() {
+        Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
+        Post p = new Post(addr, "000000000", 10.0, "Sedan", "roomy fit, street parking", "Park in San Jose no hassle", "easy");
+        assertEquals("10.0", p.getDailyRate() + ""  );
     }
 }
