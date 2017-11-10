@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
@@ -107,7 +108,7 @@ public class NewPostActivityTest {
 
 
         onView(withId(R.id.zipField))
-                .perform(typeText("95132"), closeSoftKeyboard());
+                .perform(clearText(), typeText("95132"), closeSoftKeyboard());
 
 
         onView(withId(R.id.input_layout_zip))
@@ -122,15 +123,15 @@ public class NewPostActivityTest {
         onView(withId(R.id.nextBtn)).perform(click());
 
         onView(withId(R.id.stateField))
-                .perform(typeText("CA"), closeSoftKeyboard());
+                .perform(clearText(), typeText("CA"), closeSoftKeyboard());
         onView(withId(R.id.cityField))
-                .perform(typeText("Milpitas"), closeSoftKeyboard());
+                .perform(clearText(), typeText("Milpitas"), closeSoftKeyboard());
         onView(withId(R.id.countryField))
-                .perform(typeText("United States"), closeSoftKeyboard());
+                .perform(clearText(), typeText("United States"), closeSoftKeyboard());
         onView(withId(R.id.streetField))
-                .perform(typeText("2196 Mesa Verde Dr."), closeSoftKeyboard());
+                .perform(clearText(), typeText("2196 Mesa Verde Dr."), closeSoftKeyboard());
         onView(withId(R.id.zipField))
-                .perform(typeText("95132"), closeSoftKeyboard());
+                .perform(clearText(), typeText("95132"), closeSoftKeyboard());
 
 
 
@@ -144,6 +145,7 @@ public class NewPostActivityTest {
         assertEquals(mActivityRule.getActivity().getNewPost().getAddress().getStreetAddress(), "2196 Mesa Verde Dr.");
     }
 
+
     @Test
     public void checkDatesSetInPost() {
         onView(withId(R.id.nextBtn)).perform(click());
@@ -152,4 +154,20 @@ public class NewPostActivityTest {
         assertNotNull(mActivityRule.getActivity().getNewPost().getDateAvailable());
         assertNotNull(mActivityRule.getActivity().getNewPost().getDateEnd());
     }
+
+    @Test
+    public void checkTitleSetInPost() {
+        onView(withId(R.id.nextBtn)).perform(click());
+        onView(withId(R.id.nextBtn)).perform(click());
+
+        onView(withId(R.id.zipField))
+                .perform(clearText(), typeText("95132"), closeSoftKeyboard());
+
+        onView(withId(R.id.nextBtn)).perform(click());
+        onView(withId(R.id.nextBtn)).perform(click());
+
+        assertEquals(mActivityRule.getActivity().getNewPost().getTitle(), "e.g. Space right next to fire hydrant.");
+        assertNotNull(mActivityRule.getActivity().getNewPost().getShortDescription(), "e.g. Space right next to fire hydrant.");
+    }
+
 }
