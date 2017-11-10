@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class PostActivityTests {
+public class PostdailyRateTests {
     @Test
     public void checkPostMethods() throws Exception {
         Address addr = new Address("1234 Fake St", "San Jose", "CA", 95123, "USA");
