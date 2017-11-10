@@ -5,8 +5,8 @@ package com.sjsu.jese.parkhere;
  */
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+//import android.support.test.InstrumentationRegistry;
+//import android.support.test.runner.AndroidJUnit4;
 
 import com.sjsu.jese.parkhere.browsePost.PostData;
 import com.sjsu.jese.parkhere.model.Address;
@@ -24,21 +24,27 @@ import static org.junit.Assert.*;
  * assert testPostID is in firebase.post
  *
  */
-@RunWith(AndroidJUnit4.class)
+
 public class postGetPostIdTest {
 
     @Test
     public void getPostID() throws Exception {
-        //create post
+        //get post
 
         Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
         Post p = new Post(addr, "000000000", 10.0,"Sedan", "roomy fit, street parking", "Park in San Jose no hassle", "easy");
-        PostData pd= new PostData();
-        Post newp = pd.getPostByID("000000000");
-        assertEquals(newp+ "", p + "");
-        // Context of the app under test.
-        //Context appContext = InstrumentationRegistry.getTargetContext();
+        assertEquals("000000000" + "", p.getOwnerUid() + "");
 
-        //assertEquals("com.sjsu.jese.parkhere", appContext.getPackageName());
+    }
+
+    //retrospect this was unnecessary
+    @Test
+    public void FailgetPostID() throws Exception {
+        //fail get post
+
+        Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
+        Post p = new Post(addr, "000000000", 10.0,"Sedan", "roomy fit, street parking", "Park in San Jose no hassle", "easy");
+        assertEquals( p.getOwnerUid(), "01203103");
+
     }
 }
