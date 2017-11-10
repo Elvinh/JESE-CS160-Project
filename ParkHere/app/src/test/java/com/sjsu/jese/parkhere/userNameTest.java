@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
  * use mock user check Name is as expected
  */
 public class userNameTest {
+
     @Test
     public void userName_isCorrect() throws Exception {
         Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
@@ -26,4 +27,14 @@ public class userNameTest {
         assertEquals("Brian" + "", c.getName() + "");
     }
 
+    @Test
+    public void userName_setTest() throws Exception {
+        Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
+        Customer c = new Customer("James", "5555555", addr);
+        assertEquals("James" + "", c.getName() + "");
+
+        c.setName("Evan");
+        assertEquals("Evan" + "", c.getName() + "");
+
+    }
 }

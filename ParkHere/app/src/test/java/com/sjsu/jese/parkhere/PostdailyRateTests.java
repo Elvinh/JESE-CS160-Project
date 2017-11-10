@@ -22,6 +22,5 @@ public class PostdailyRateTests {
         assertEquals("23.0", p.getDailyRate() + "");
     }
 
-
 }
 

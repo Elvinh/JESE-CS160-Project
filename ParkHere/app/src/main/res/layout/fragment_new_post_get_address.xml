@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/input_layout_country"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="24dp"
             android:text="Where's your parking space located?"
             android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
