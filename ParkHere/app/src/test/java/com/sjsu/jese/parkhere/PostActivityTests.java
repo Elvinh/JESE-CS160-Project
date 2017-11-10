@@ -22,6 +22,5 @@ public class PostActivityTests {
         assertEquals("23.0", p.getDailyRate() + "");
     }
 
-
 }
 

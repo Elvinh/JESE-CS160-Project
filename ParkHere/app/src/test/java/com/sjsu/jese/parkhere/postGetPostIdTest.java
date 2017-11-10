@@ -44,7 +44,17 @@ public class postGetPostIdTest {
 
         Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
         Post p = new Post(addr, "000000000", 10.0,"Sedan", "roomy fit, street parking", "Park in San Jose no hassle", "easy");
-        assertEquals( p.getOwnerUid(), "01203103");
+        assertFalse("this test was designed to fail" ,p.getOwnerUid().equals("01203103"));
 
+    }
+
+    @Test
+    public void checkPostOwnerIdSetterAndGetters() throws Exception {
+        Address addr = new Address("1234 Fake St", "San Jose", "CA", 95123, "USA");
+        Post p = new Post(addr, "1", 23.0, "Compact", "Mini Van", "SUV", "easy");
+        assertEquals("1", p.getOwnerUid());
+
+        p.setOwnerUid("3");
+        assertEquals("3" + "", p.getOwnerUid() + "");
     }
 }

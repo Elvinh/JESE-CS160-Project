@@ -95,7 +95,7 @@ public class BrowsePostFragment extends Fragment {
     }
 
 
-    private class PostAdapter extends RecyclerView.Adapter<PostHolder> implements View.OnClickListener{
+    public class PostAdapter extends RecyclerView.Adapter<PostHolder> implements View.OnClickListener{
         private ArrayList< Post> mPost;
 
         public PostAdapter(ArrayList<Post> posts){
