@@ -2,14 +2,11 @@ package com.sjsu.jese.parkhere.login;
 
 
 import android.support.design.widget.TextInputLayout;
-import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
 
 import com.sjsu.jese.parkhere.R;
-
-import static android.support.test.espresso.Espresso.onView;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -24,8 +21,8 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.*;
+import static android.support.test.espresso.Espresso.onView;
+import static org.hamcrest.CoreMatchers.not;
 
 /**
  * Created by Elton on 11/9/2017.
@@ -62,6 +59,7 @@ public class LoginActivityTest {
             }
         };
     }
+
     @Test
     public void checkEmailField() {
         onView(withId(R.id.emailText))
