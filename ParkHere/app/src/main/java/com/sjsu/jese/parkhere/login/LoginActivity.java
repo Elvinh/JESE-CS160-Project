@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         emailField = (EditText) findViewById(R.id.emailText);
         passwordField = (EditText) findViewById(R.id.passwordText);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
-        inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_email);
+        inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
 
         findViewById(R.id.forgotPassTextView).setOnClickListener(this);
         findViewById(R.id.signInBtn).setOnClickListener(this);
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intent);
     }
     private void signIn(String email, String password) {
-        if(!validateForm()) {
+        if(!validateForm(email, password)) {
             return;
         }
 
@@ -105,10 +105,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         user = mAuth.getCurrentUser();
         updateUI(user);
     }*/
-    private  boolean validateForm() {
+    public  boolean validateForm(String email, String password) {
         boolean valid = true;
 
-        String email = emailField.getText().toString();
         if(TextUtils.isEmpty(email)) {
             //emailField.setError("Required.");
             inputLayoutEmail.setError("Required.");
@@ -119,13 +118,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
 
-        String password = passwordField.getText().toString();
-        if(TextUtils.isEmpty(email)) {
-            //passwordField.setError("Required.");
+        if(TextUtils.isEmpty(password)) {
+            //emailField.setError("Required.");
             inputLayoutPassword.setError("Required.");
             valid = false;
         } else {
+            //emailField.setError(null);
             inputLayoutPassword.setError(null);
+
         }
 
         return valid;
