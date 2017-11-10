@@ -25,6 +25,20 @@ public class postAddressTest {
 
         assertEquals( addr +"", p.getAddress()+"" );
     }
+
+
+    @Test
+    public void checkPostAddressSetterAndGetters() throws Exception {
+        Address addr = new Address("1234 Fake St", "San Jose", "CA", 95123, "USA");
+
+        Post p = new Post(addr, "1", 23.0, "Compact", "Mini Van", "SUV", "easy");
+
+        assertEquals(addr+"", p.getAddress() + "");
+        Address addr2 = new Address("12 Fake St", "Cambpell", "CA", 95123, "USA");
+        p.setAddress(addr2);
+        assertEquals(addr2 + "", p.getAddress() + "");
+    }
+
 /*
 *removed due to us not currently having this functionality
 *

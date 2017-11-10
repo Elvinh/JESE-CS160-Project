@@ -20,10 +20,50 @@ import static org.junit.Assert.*;
  */
 public class userAddressTest {
     @Test
-    public void userAddress_isCorrect() throws Exception {
+    public void setCity_isCorrect() throws Exception {
         Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
-        Customer c = new Customer("", "", addr);
 
-        assertEquals(addr + "", c.getAddress() + "");
+        assertTrue(addr.getCity().equals("San Jose"));
+
+        addr.setCity("New York");
+        assertTrue(addr.getCity().equals("New York"));
+    }
+
+    @Test
+    public void setStreet_isCorrect() throws Exception {
+        Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
+        assertTrue(addr.getStreetAddress().equals("1 raider way"));
+
+        addr.setCity("123 bob court");
+        assertTrue(addr.getCity().equals("123 bob court"));
+    }
+
+    @Test
+    public void setzip_isCorrect() throws Exception {
+        Address addr = new Address("1 raider way", "San Jose", "CA", 95112, "USA");
+        assertTrue(addr.getZipCode()==95112);
+
+        addr.setZipCode(50123);
+        assertTrue(addr.getZipCode()==50123);
+    }
+
+    @Test
+    public void setState_isCorrect() throws Exception {
+        Address addr = new Address("1 raider way",
+                "San Jose", "CA", 95112, "USA");
+        assertTrue(addr.getState().equals("CA"));
+
+        addr.setState("NY");
+        assertTrue(addr.getState().equals("NY"));
+    }
+
+    @Test
+    public void setCountry_isCorrect() throws Exception {
+        Address addr = new Address("1 raider way",
+                "San Jose", "CA", 95112, "USA");
+        assertTrue(addr.getCountry().equals("USA"));
+
+        addr.setState("Canada");
+        assertTrue(addr.getState().equals("Canada"));
     }
 }
