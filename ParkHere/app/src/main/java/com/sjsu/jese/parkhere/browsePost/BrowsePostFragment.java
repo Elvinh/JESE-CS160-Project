@@ -96,7 +96,7 @@ public class BrowsePostFragment extends Fragment {
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getActivity().getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         EditText etPlace = (EditText)autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input);
-        etPlace.setHint("Search by city.");
+        etPlace.setHint("Search by City");
 
         AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
                 .setCountry("USA")

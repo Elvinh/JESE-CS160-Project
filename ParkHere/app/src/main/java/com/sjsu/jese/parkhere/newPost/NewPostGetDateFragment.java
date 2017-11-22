@@ -219,7 +219,6 @@ public class NewPostGetDateFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         startTimeText.setText(sdf.format(startDateCalender.getTime()));
-
     }
 
     private void updateEndTime() {
