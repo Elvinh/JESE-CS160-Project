@@ -16,17 +16,18 @@ import com.google.firebase.database.ValueEventListener;
 import com.sjsu.jese.parkhere.Book.BookActivity;
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Address;
+import com.sjsu.jese.parkhere.model.Post;
 
 import org.w3c.dom.Text;
 
 public class PostDetailActivity extends AppCompatActivity {
-
+    final String POSTTAG="JESE.ParkHere.post.ID.to.Book";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_details);
 
-        String postId = getIntent().getStringExtra("POST_ID");
+        final String postId = getIntent().getStringExtra("POST_ID");
         Log.d("Post ID", postId);
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
@@ -63,7 +64,7 @@ public class PostDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(PostDetailActivity.this,BookActivity.class);
-                intent.putExtra()
+                intent.putExtra(POSTTAG,postId);
                 startActivity(intent);
             }
         });
