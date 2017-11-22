@@ -36,16 +36,61 @@ import static android.content.ContentValues.TAG;
 
 public class BrowsePostFragment extends Fragment {
     private RecyclerView mRecyclerView;
-
+    private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    private final DatabaseReference mPostsRef = mDatabase.getReference("Posts");
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_browse_post, container, false);
 
-        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-        final DatabaseReference mSearchRef = mDatabase.getReference("Posts");
 
+        setUpDefaultBrowseResult(v);
+        setUpSearch();
+
+/*
+        mPosts= new PostData();
+        mAdapter= new PostAdapter(mPosts.getPosts());
+        Log.e("browse","created browse");
+        Log.e("browse", String.valueOf(mPosts.getPosts().size()));
+
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+*/
+        return v;
+    }
+
+    private void setUpDefaultBrowseResult(View v) {
+        mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+
+
+        mPostsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Post> values = new ArrayList<>();
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Post post = child.getValue(Post.class);
+                    post.setUid(child.getKey());
+                    values.add(post);
+                }
+
+                mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), values));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    
+    private void setUpSearch() {
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getActivity().getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
@@ -54,7 +99,7 @@ public class BrowsePostFragment extends Fragment {
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
                 Log.i("Hey", "Place: " + place.getName().toString());
-                mSearchRef.orderByChild("address/city").equalTo(place.getName().toString()).addValueEventListener(new ValueEventListener() {
+                mPostsRef.orderByChild("address/city").equalTo(place.getName().toString()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         ArrayList<Post> values = new ArrayList<>();
@@ -80,44 +125,5 @@ public class BrowsePostFragment extends Fragment {
                 Log.i("Hey", "An error occurred: " + status);
             }
         });
-
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-        DatabaseReference mPostsRef = mDatabase.getReference("Posts");
-
-        mPostsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Post> values = new ArrayList<>();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    Post post = child.getValue(Post.class);
-                    post.setUid(child.getKey());
-                    values.add(post);
-                }
-
-                mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), values));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-/*
-        mPosts= new PostData();
-        mAdapter= new PostAdapter(mPosts.getPosts());
-        Log.e("browse","created browse");
-        Log.e("browse", String.valueOf(mPosts.getPosts().size()));
-
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.posts_recycle_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
-*/
-        return v;
     }
-
 }
