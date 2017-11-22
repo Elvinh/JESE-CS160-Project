@@ -36,7 +36,9 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.size.setText("FITS " + posts.get(position).getCarSize().toUpperCase() + " CAR");
         holder.name.setText(posts.get(position).getTitle());
+        holder.price.setText("$" + String.valueOf((int)posts.get(position).getDailyRate()) + " per hour");
         holder.currPost = posts.get(position);
     }
 
@@ -47,6 +49,8 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
+        private TextView price;
+        private TextView size;
         private Post currPost;
         private View view;
 
@@ -54,6 +58,9 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
             super(itemView);
             view = itemView;
             name = (TextView) itemView.findViewById(R.id.item_title);
+            price = (TextView) itemView.findViewById(R.id.item_price);
+            size = (TextView) itemView.findViewById(R.id.item_size);
+
             view.setOnClickListener(new View.OnClickListener() {
                @Override
                 public void onClick(View v) {
