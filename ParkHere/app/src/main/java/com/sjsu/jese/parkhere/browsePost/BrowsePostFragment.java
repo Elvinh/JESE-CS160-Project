@@ -36,14 +36,15 @@ import static android.content.ContentValues.TAG;
 
 public class BrowsePostFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private PostAdapter mAdapter;
-    private PostData mPosts;
 
-    
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_browse_post, container, false);
+
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference mSearchRef = mDatabase.getReference("Posts");
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getActivity().getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
@@ -52,7 +53,25 @@ public class BrowsePostFragment extends Fragment {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Log.i("Hey", "Place: " + place.getName());
+                Log.i("Hey", "Place: " + place.getName().toString());
+                mSearchRef.orderByChild("address/city").equalTo(place.getName().toString()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<Post> values = new ArrayList<>();
+                        for (DataSnapshot child : dataSnapshot.getChildren()) {
+                            Post post = child.getValue(Post.class);
+                            post.setUid(child.getKey());
+                            values.add(post);
+                        }
+
+                        mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), values));
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
@@ -66,17 +85,17 @@ public class BrowsePostFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+
         DatabaseReference mPostsRef = mDatabase.getReference("Posts");
 
         mPostsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Post> values = new ArrayList<>();
-                for(DataSnapshot child: dataSnapshot.getChildren()) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Post post = child.getValue(Post.class);
                     post.setUid(child.getKey());
-                     values.add(post);
+                    values.add(post);
                 }
 
                 mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity(), values));
@@ -101,51 +120,4 @@ public class BrowsePostFragment extends Fragment {
         return v;
     }
 
-
-
-    private class PostHolder extends RecyclerView.ViewHolder{
-       private TextView mAddress;
-       private TextView mPrice;
-
-        public PostHolder(View itemView) {
-            super(itemView);
-            mAddress=(TextView) itemView.findViewById(R.id.address);
-            //mPrice=(TextView) itemView.findViewById(R.id.price);
-        }
-        public void bindPost(Post p){
-            mAddress.setText(p.getAddress().toString());
-            mPrice.setText(Double.toString(p.getDailyRate()));
-        }
-    }
-
-
-    public class PostAdapter extends RecyclerView.Adapter<PostHolder> implements View.OnClickListener{
-        private ArrayList< Post> mPost;
-
-        public PostAdapter(ArrayList<Post> posts){
-            mPost=posts;
-        }
-
-        @Override
-        public PostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(getActivity()).
-                    inflate(R.layout.post_item, parent, false);
-            return new PostHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(PostHolder holder, int position) {
-            holder.bindPost(mPost.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return mPost.size();
-        }
-
-        @Override
-        public void onClick(View v) {
-
-        }
-    }
 }
