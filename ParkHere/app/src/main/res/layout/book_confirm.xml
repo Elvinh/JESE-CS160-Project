@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Price"
+        android:layout_width="253dp"
+        android:layout_height="28dp"
+        android:text="Price"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="293dp" />
+
+    <TextView
+        android:id="@+id/PostID"
+        android:layout_width="253dp"
+        android:layout_height="28dp"
+        android:text="PostID"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="124dp" />
+
+    <TextView
+        android:id="@+id/resTime"
+        android:layout_width="253dp"
+        android:layout_height="28dp"
+        android:text="Resevation time"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="214dp" />
+
+    <Button
+        android:id="@+id/SubmitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        tools:layout_editor_absoluteX="260dp"
+        tools:layout_editor_absoluteY="418dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="144dp"
+        android:layout_height="74dp"
+        android:text="Reservation Confirmation"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="35dp" />
+
+</android.support.constraint.ConstraintLayout>

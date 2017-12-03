@@ -22,13 +22,14 @@ import org.w3c.dom.Text;
 
 public class PostDetailActivity extends AppCompatActivity {
     final String POSTTAG="JESE.ParkHere.post.ID.to.Book";
+    String postId="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_details);
+         postId = getIntent().getStringExtra("POST_ID");
 
-        final String postId = getIntent().getStringExtra("POST_ID");
-        Log.d("Post ID", postId);
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference mPost = mDatabase.getReference("Posts").child(postId);
@@ -63,11 +64,17 @@ public class PostDetailActivity extends AppCompatActivity {
         mBookBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(PostDetailActivity.this,BookActivity.class);
-                intent.putExtra(POSTTAG,postId);
-                startActivity(intent);
+                tobooking();
             }
         });
 
+
+
+    }
+    public void tobooking()
+    {
+        Intent intent= new Intent(this,BookActivity.class);
+        intent.putExtra("POST_ID",postId);
+        startActivity(intent);
     }
 }

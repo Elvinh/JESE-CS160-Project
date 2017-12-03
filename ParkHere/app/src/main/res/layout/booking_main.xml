@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/Hourbook"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/questionText"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="70dp"
+                        android:text="When would you like to use the space?"
+                        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_serviceDate"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/questionText"
+                        android:layout_marginTop="30dp">
+
+                        <EditText
+                            android:id="@+id/ServiceDateField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/input_layout_serviceDate"
+                            android:layout_alignEnd="@+id/input_layout_serviceDate"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="Date you would like to use"
+                            android:text="12/15/17" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_end_date"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/input_layout_start_time"
+                        android:layout_marginTop="25dp">
+
+                        <EditText
+                            android:id="@+id/endTimeField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="End time"
+                            android:text="4:00 pm " />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_start_time"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/input_layout_serviceDate"
+                        android:layout_marginTop="30dp">
+
+                        <EditText
+                            android:id="@+id/startTimeField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/input_layout_serviceDate"
+                            android:layout_alignEnd="@+id/input_layout_serviceDate"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="Start Time"
+                            android:text="7:00 am" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <Button
+                        android:id="@+id/submitBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/questionText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="34dp"
+                        android:text="Submit" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Daybook"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/DateText"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="70dp"
+                        android:text="When would you like to use the space?"
+                        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_serviceStartDate"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/DateText"
+                        android:layout_marginTop="30dp">
+
+                        <EditText
+                            android:id="@+id/serviceStartDayField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/input_layout_serviceStartDate"
+                            android:layout_alignEnd="@+id/input_layout_serviceStartDate"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="Date you would like to use"
+                            android:text="12/15/17" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_EndDayField"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/input_layout_serviceDate"
+                        android:layout_marginTop="30dp">
+
+                        <EditText
+                            android:id="@+id/EndDayField"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/input_layout_serviceDate"
+                            android:layout_alignEnd="@+id/input_layout_serviceDate"
+                            android:clickable="true"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="Start Time"
+                            android:text="7:00 am" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <Button
+                        android:id="@+id/submitBtnDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/questionText"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="34dp"
+                        android:text="Submit" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Save_booking"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+</RelativeLayout>
