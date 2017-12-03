@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sjsu.jese.parkhere.Book.BookActivity;
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.Review.ReviewAcivity;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Post;
 
@@ -22,6 +23,8 @@ import org.w3c.dom.Text;
 
 public class PostDetailActivity extends AppCompatActivity {
     final String POSTTAG="JESE.ParkHere.post.ID.to.Book";
+    final private String CURRENTPOST="com.sjsu.parkHere.current.Post";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class PostDetailActivity extends AppCompatActivity {
         final TextView mStartDate = (TextView) findViewById(R.id.startDateText);
         final TextView mEndDate = (TextView) findViewById(R.id.endDateText);
         final Button mBookBt=(Button) findViewById(R.id.book_button);
+        final Button mReviewBt=(Button) findViewById(R.id.create_review_bt);
 
         mPost.addValueEventListener(new ValueEventListener() {
             @Override
@@ -69,5 +73,14 @@ public class PostDetailActivity extends AppCompatActivity {
             }
         });
 
+        mReviewBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PostDetailActivity.this, ReviewAcivity.class);
+                intent.putExtra(CURRENTPOST,postId);
+                startActivity(intent);
+
+            }
+        });
     }
 }

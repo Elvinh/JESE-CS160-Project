@@ -2,6 +2,7 @@ package com.sjsu.jese.parkhere.model;
 
 /**
  * Created by evankardos on 11/30/17.
+ * need to added costumer id attribute in firebase
  */
 
 public class Review {
