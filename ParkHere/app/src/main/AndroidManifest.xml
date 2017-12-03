@@ -26,7 +26,10 @@
         <activity android:name=".browsePost.BrowsePostActivity" />
         <activity android:name=".login.CreateAccountActivity" />
         <activity android:name=".newPost.NewPostActivity" />
+
         <activity android:name=".Review.ReviewAcivity"/>
+
+        <activity android:name=".Book.BookActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
