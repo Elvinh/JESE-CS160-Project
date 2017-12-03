@@ -56,13 +56,30 @@ public class ReviewAcivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String title_text = mTitle.getText().toString().trim();
+                String describ_text = mDescrib.getText().toString().trim();
 
-                Review r= new Review(currUser.getUid(),
-                        mTitle.getText().toString(),
-                        mDescrib.getText().toString(),
-                        (int)mRate.getRating());
+               boolean title_fault= title_text.isEmpty() ||
+                       title_text.length() == 0 ||
+                       title_text.equals("") ||
+                       title_text == null;
 
-                addToDataBase(r);
+               boolean describ_fault= describ_text.isEmpty() ||
+                       describ_text.length() == 0 ||
+                       describ_text.equals("") ||
+                       describ_text == null;
+
+                if(describ_fault || title_fault) {
+                    Toast.makeText(getApplicationContext(), "Please fill in all the criteria",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+
+                    Review r = new Review(currUser.getUid(), title_text,
+                            describ_text, (int) mRate.getRating());
+
+                    addToDataBase(r);
+                }
             }
         });
 

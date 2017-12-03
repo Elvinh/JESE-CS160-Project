@@ -6,55 +6,55 @@ package com.sjsu.jese.parkhere.model;
  */
 
 public class Review {
-    String mUserName;
-    String mTitle;
-    String mDescription;
-    int mRate;
+    String userName;
+    String title;
+    String description;
+    int rate;
 
 
    public Review(){}
 
     public Review(String userName, String title, String description, int rate){
-       mDescription=description;
-       mTitle=title;
-       mUserName=userName;
-       mRate=rate;
+       this.description=description;
+       this.title=title;
+       this.userName=userName;
+       this.rate=rate;
     }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public void setDescription(String description) {
-        mDescription = description;
+        this.description = description;
     }
 
     public void setTitle(String title) {
-        mTitle = title;
+        this.title = title;
     }
 
     public String getTitle() {
-        return mTitle;
+        return this.title;
     }
 
     public void setUserName(String userName) {
-        mUserName = userName;
+        this.userName = userName;
     }
 
     public String getUserName() {
-        return mUserName;
+        return this.userName;
     }
 
     public void setRate(int rate) {
         if(0<rate || rate>5) {
-            mRate = rate;
+            this.rate = rate;
         }
         else {
-            rate = 0;
+            this.rate = 1;
         }
     }
 
     public int getRate() {
-        return mRate;
+        return this.rate;
     }
 }

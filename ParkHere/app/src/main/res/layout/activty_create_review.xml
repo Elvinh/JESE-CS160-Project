@@ -10,14 +10,22 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:ems="10"
-        android:text="Title"/>
+        android:hint="title"
+        />
 
 
     <EditText
         android:id="@+id/review_decribtion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine"
+        android:hint="description"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/explain_rating"
+        android:textSize="25dp"/>
 
     <RatingBar
         android:id="@+id/_review_rating"
@@ -26,6 +34,7 @@
         android:max="5"
         android:numStars="5"
         android:stepSize="1"
+        android:rating="1"
         />
 
     <Button
