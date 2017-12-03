@@ -3,13 +3,19 @@ package com.sjsu.jese.parkhere.browsePost;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Post;
 import com.sjsu.jese.parkhere.postDetails.PostDetailActivity;
@@ -36,10 +42,18 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference imageRef = storageRef.child("images/" + posts.get(position).getUid() + "/post_image");
+
         holder.size.setText("FITS " + posts.get(position).getCarSize().toUpperCase() + " CAR");
         holder.name.setText(posts.get(position).getTitle());
         holder.price.setText("$" + String.valueOf((int)posts.get(position).getDailyRate()) + " per hour");
         holder.currPost = posts.get(position);
+        Glide.with(context /* context */)
+                .using(new FirebaseImageLoader())
+                .load(imageRef)
+                .into(holder.postImage);
     }
 
     @Override
@@ -53,6 +67,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
         private TextView size;
         private Post currPost;
         private View view;
+        private ImageView postImage;
 
         ViewHolder (View itemView) {
             super(itemView);
@@ -60,6 +75,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
             name = (TextView) itemView.findViewById(R.id.item_title);
             price = (TextView) itemView.findViewById(R.id.item_price);
             size = (TextView) itemView.findViewById(R.id.item_size);
+            postImage = (ImageView) itemView.findViewById(R.id.imageView3);
 
             view.setOnClickListener(new View.OnClickListener() {
                @Override

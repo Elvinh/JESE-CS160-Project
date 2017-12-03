@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.sjsu.jese.parkhere.MainActivity;
 import com.sjsu.jese.parkhere.R;
 import com.sjsu.jese.parkhere.model.Post;
@@ -47,6 +49,13 @@ public class NewPostConfirmation extends Fragment {
     FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
 
     ProgressDialog progressDialog;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+    StorageReference imageRef;
+
+    Bitmap postImage;
+
 
     public NewPostConfirmation() {
         // Required empty public constructor
@@ -103,8 +112,10 @@ public class NewPostConfirmation extends Fragment {
         if (requestCode == 1000 && resultCode == RESULT_OK && data != null) {
             Uri returnUri = data.getData();
             try {
-                Bitmap bitmapImage = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), returnUri);
-                postImageView.setImageBitmap(bitmapImage);
+                postImage = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), returnUri);
+                postImageView.setImageBitmap(postImage);
+                imageRef = storageRef.child("images/" + postUid + "/post_image");
+                imageRef.putFile(returnUri);
             } catch (IOException e) {
 
             }
