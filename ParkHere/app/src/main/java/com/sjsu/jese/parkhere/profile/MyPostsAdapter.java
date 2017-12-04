@@ -1,9 +1,7 @@
-package com.sjsu.jese.parkhere.browsePost;
-
+package com.sjsu.jese.parkhere.profile;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,17 +21,18 @@ import com.sjsu.jese.parkhere.postDetails.PostDetailActivity;
 import java.util.ArrayList;
 
 /**
- * Created by Elton on 11/5/2017.
+ * Created by sandeepsamra on 12/3/17.
  */
 
-class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder>{
     private ArrayList<Post> posts;
     private Context context;
 
-    RecyclerViewAdapter(Context context, ArrayList<Post> values) {
+    MyPostsAdapter(Context context, ArrayList<Post> values) {
         this.context = context;
         this.posts = values;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -78,14 +77,14 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
             postImage = (ImageView) itemView.findViewById(R.id.imageView3);
 
             view.setOnClickListener(new View.OnClickListener() {
-               @Override
+                @Override
                 public void onClick(View v) {
                     Log.d("Title", currPost.getTitle());
-                   Intent toPostDetails = new Intent(context, PostDetailActivity.class);
-                   toPostDetails.putExtra("POST_ID", currPost.getUid());
-                   context.startActivity(toPostDetails);
-               }
+                    Intent toPostDetails = new Intent(context, PostDetailActivity.class);
+                    toPostDetails.putExtra("POST_ID", currPost.getUid());
+                    context.startActivity(toPostDetails);
+                }
             });
         }
     }
-}
+ }

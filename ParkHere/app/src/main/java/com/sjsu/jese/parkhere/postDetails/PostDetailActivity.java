@@ -6,15 +6,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.sjsu.jese.parkhere.Book.BookActivity;
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.Review.ReviewAcivity;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Post;
 
@@ -23,6 +29,9 @@ import org.w3c.dom.Text;
 public class PostDetailActivity extends AppCompatActivity {
     final String POSTTAG="JESE.ParkHere.post.ID.to.Book";
     String postId="";
+
+    final private String CURRENTPOST="com.sjsu.parkHere.current.Post";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,11 @@ public class PostDetailActivity extends AppCompatActivity {
         final TextView mStartDate = (TextView) findViewById(R.id.startDateText);
         final TextView mEndDate = (TextView) findViewById(R.id.endDateText);
         final Button mBookBt=(Button) findViewById(R.id.book_button);
+
+        final Button mReviewBt=(Button) findViewById(R.id.create_review_bt);
+
+        final ImageView mPostImage = (ImageView) findViewById(R.id.post_detail_image);
+
 
         mPost.addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,10 +75,29 @@ public class PostDetailActivity extends AppCompatActivity {
             }
         });
 
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference imageRef = storageRef.child("images/" + postId + "/post_image");
+        Glide.with(this /* context */)
+                .using(new FirebaseImageLoader())
+                .load(imageRef)
+                .into(mPostImage);
+        
         mBookBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tobooking();
+            }
+        });
+
+
+        mReviewBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PostDetailActivity.this, ReviewAcivity.class);
+                intent.putExtra(CURRENTPOST,postId);
+                startActivity(intent);
+
             }
         });
 
@@ -76,5 +109,6 @@ public class PostDetailActivity extends AppCompatActivity {
         Intent intent= new Intent(this,BookActivity.class);
         intent.putExtra("POST_ID",postId);
         startActivity(intent);
+
     }
 }
