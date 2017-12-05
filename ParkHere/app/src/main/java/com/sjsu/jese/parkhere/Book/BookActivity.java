@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +18,7 @@ import com.sjsu.jese.parkhere.model.modelReservation;
 import com.sjsu.jese.parkhere.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 public class BookActivity extends AppCompatActivity {
@@ -30,6 +32,10 @@ public class BookActivity extends AppCompatActivity {
     //final DatabaseReference mPost = mDatabase.getReference("Posts").child(postId);
     String postID="";
 
+    Calendar startDate;
+    Calendar time;
+    EditText startDateText;
+    EditText timeText;
 
 
     @Override
@@ -48,7 +54,7 @@ public class BookActivity extends AppCompatActivity {
         CustReservation.child(CurrID).child("Reservations").child(resID).setValue(true);
         //String STime= mStartTime.toString();
 
-
+        DateFormat(mDay,mStartTime,mEndTime);
         modelReservation a=new modelReservation(CurrID, mDay.getText().toString(), mStartTime.getText().toString(),mEndTime.getText().toString(), postID);
         reservationRef.child(resID).setValue(a);
 
@@ -59,35 +65,38 @@ public class BookActivity extends AppCompatActivity {
             }
         });
     }
+    /*
     public void addBooking(){
         //modelReservation a=new modelReservation("a","a","a","a","a");
-
-
-    }
+    }*/
     public void toConfirm()
     {
-        Intent intent= new Intent(this,BookActivity.class); //needs to connect to confirmation page
+        Intent intent= new Intent(this,BookActivity.class); //needs to connect to ConfirmationActivity
         intent.putExtra("POST_ID",postID);
         startActivity(intent);
+
     }
-    private void DateFormat()
+    //changed my mind this method should be searching for conflicts.
+     public String DateFormat(TextView Date, TextView sTime, TextView eTime) //format (and validate non confliction)
     {
         //NewPostGetDateFragment
-        /**
-        private void updateStartDate(){
-        String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        String formatted;
+        String dateFormat = Date.getText().toString();
+        //String dateFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat date_sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
-        startDateText.setText(sdf.format(startDateCalender.getTime()));
+        //startDateText.setText(date_sdf.format(startDate.getTime()));
 
-        }
-        private void updateStartTime()
-        {
-        String myFormat = "HH:mm a";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        startTimeText.setText(sdf.format(startDateCalender.getTime()));
-        }
-        **/
+        String timeFormat = sTime.getText().toString();
+        //String timeFormat = "HH:mm a";
+        SimpleDateFormat time_sdf = new SimpleDateFormat(timeFormat, Locale.US);
+
+        //timeText.setText(time_sdf.format(time.getTime()));
+
+
+        formatted="";
+        return formatted;
+
     }
 }

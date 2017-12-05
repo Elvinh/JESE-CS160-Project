@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.sjsu.jese.parkhere.Book.ConfirmationActivity"
+    android:id="@+id/submitBtn">
 
     <TextView
         android:id="@+id/Price"
         android:layout_width="253dp"
         android:layout_height="28dp"
+        android:layout_alignStart="@+id/PostID"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="54dp"
         android:text="Price"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="293dp" />
@@ -17,6 +22,9 @@
         android:id="@+id/PostID"
         android:layout_width="253dp"
         android:layout_height="28dp"
+        android:layout_above="@+id/SubmitBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="62dp"
         android:text="PostID"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="124dp" />
@@ -25,6 +33,8 @@
         android:id="@+id/resTime"
         android:layout_width="253dp"
         android:layout_height="28dp"
+        android:layout_alignStart="@+id/Price"
+        android:layout_centerVertical="true"
         android:text="Resevation time"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="214dp" />
@@ -33,6 +43,9 @@
         android:id="@+id/SubmitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_toEndOf="@+id/textView6"
         android:text="Confirm"
         tools:layout_editor_absoluteX="260dp"
         tools:layout_editor_absoluteY="418dp" />
@@ -41,8 +54,12 @@
         android:id="@+id/textView6"
         android:layout_width="144dp"
         android:layout_height="74dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
         android:text="Reservation Confirmation"
+        android:textAppearance="@android:style/TextAppearance.Large"
         tools:layout_editor_absoluteX="134dp"
         tools:layout_editor_absoluteY="35dp" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
