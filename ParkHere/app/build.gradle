@@ -14,7 +14,9 @@ android {
     signingConfigs {
         release {
             storeFile file("parkhereKey.keystore")
+            storePassword "jesejese"
             keyAlias "key0"
+            keyPassword "jesejese"
             v2SigningEnabled false
         }
     }
