@@ -6,19 +6,27 @@ package com.sjsu.jese.parkhere.model;
  */
 
 public class Review {
-    String userName;
+    String userId;
     String title;
     String description;
     int rate;
-
+    String postId;
 
    public Review(){}
 
-    public Review(String userName, String title, String description, int rate){
+    public Review(String userId, String title, String description, int rate){
        this.description=description;
        this.title=title;
-       this.userName=userName;
+       this.userId = userId;
        this.rate=rate;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
     }
 
     public String getDescription() {
@@ -37,12 +45,12 @@ public class Review {
         return this.title;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUserId() {
+        return this.userId;
     }
 
     public void setRate(int rate) {

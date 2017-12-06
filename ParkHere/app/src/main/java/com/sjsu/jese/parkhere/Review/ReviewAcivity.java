@@ -13,10 +13,16 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.model.Post;
 import com.sjsu.jese.parkhere.model.Review;
+
+import java.util.ArrayList;
 
 /**
  * Created by evankardos on 12/2/17.
@@ -77,7 +83,7 @@ public class ReviewAcivity extends AppCompatActivity {
 
                     Review r = new Review(currUser.getUid(), title_text,
                             describ_text, (int) mRate.getRating());
-
+                    r.setPostId(currentPost);
                     addToDataBase(r);
                 }
             }
@@ -86,10 +92,36 @@ public class ReviewAcivity extends AppCompatActivity {
     }
 
     private void addToDataBase(Review newReview) {
-    mReviewRef.child(reviewUid).setValue(newReview);
-    mPostsRef.child(currentPost).child("reviews").child(reviewUid).setValue(true);
+        mReviewRef.child(reviewUid).setValue(newReview);
+        mPostsRef.child(currentPost).child("reviews").child(reviewUid).setValue(true);
+
+        mReviewRef.orderByChild("postId").equalTo(currentPost).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Integer> values = new ArrayList<>();
+                int avgRating = 0;
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Review review = child.getValue(Review.class);
+                    values.add(review.getRate());
+                }
+                for(int value: values) {
+                    avgRating = avgRating + value;
+                }
+
+                if(values.size() != 0)
+                    avgRating = avgRating/values.size();
+
+                mPostsRef.child(currentPost).child("averageRating").setValue(avgRating);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         Toast.makeText(getApplicationContext(), "Review Submitted",
                 Toast.LENGTH_SHORT).show();
-    finish();
+        finish();
     }
 }

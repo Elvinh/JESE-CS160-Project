@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -54,6 +55,8 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
                 .using(new FirebaseImageLoader())
                 .load(imageRef)
                 .into(holder.postImage);
+        holder.averageRating.setRating((float) posts.get(position).getAverageRating());
+        holder.averageRating.setIsIndicator(true);
     }
 
     @Override
@@ -68,6 +71,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
         private Post currPost;
         private View view;
         private ImageView postImage;
+        private RatingBar averageRating;
 
         ViewHolder (View itemView) {
             super(itemView);
@@ -76,6 +80,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
             price = (TextView) itemView.findViewById(R.id.item_price);
             size = (TextView) itemView.findViewById(R.id.item_size);
             postImage = (ImageView) itemView.findViewById(R.id.imageView3);
+            averageRating = (RatingBar) itemView.findViewById(R.id.review_rating);
 
             view.setOnClickListener(new View.OnClickListener() {
                @Override
