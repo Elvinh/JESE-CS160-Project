@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.sjsu.jese.parkhere.MainActivity;
 import com.sjsu.jese.parkhere.R;
 
 /**
@@ -18,8 +20,11 @@ public class ConfirmationActivity extends AppCompatActivity { //needs to connect
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.book_confirm);
+
         postID = getIntent().getStringExtra("POST_ID");
-        Button confirmBtn = (Button) findViewById(R.id.submitBtn);
+        Button confirmBtn = (Button) findViewById(R.id.SubmitBtn);
+
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,8 +34,7 @@ public class ConfirmationActivity extends AppCompatActivity { //needs to connect
     }
     public void toMain()
     {
-        Intent intent= new Intent(this,BookActivity.class); //needs to connect to ConfirmationActivity
-        intent.putExtra("POST_ID",postID);
+        Intent intent= new Intent(this,MainActivity.class); //needs to connect to ConfirmationActivity
         startActivity(intent);
 
     }

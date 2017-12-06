@@ -1,6 +1,8 @@
 package com.sjsu.jese.parkhere.Book;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,24 +46,22 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        TextView mDay=(TextView)findViewById(R.id.ServiceDateField);
-        TextView mStartTime=(TextView)findViewById(R.id.startTimeField);
-        TextView mEndTime=(TextView)findViewById(R.id.endTimeField);
+        final TextView mDay=(TextView)findViewById(R.id.ServiceDateField);
+        final TextView mStartTime=(TextView)findViewById(R.id.startTimeField);
+        final TextView mEndTime=(TextView)findViewById(R.id.endTimeField);
         Button subBtn=(Button) findViewById(R.id.submitBtn);
 
         postID = getIntent().getStringExtra("POST_ID");
         Log.d("coolio", "imHere");
-        CustReservation.child(CurrID).child("Reservations").child(resID).setValue(true);
         //String STime= mStartTime.toString();
-
-        DateFormat(mDay,mStartTime,mEndTime);
-        modelReservation a=new modelReservation(CurrID, mDay.getText().toString(), mStartTime.getText().toString(),mEndTime.getText().toString(), postID);
-        reservationRef.child(resID).setValue(a);
 
         subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toConfirm();
+                DateFormat(mDay,mStartTime,mEndTime);
+                modelReservation a=new modelReservation(CurrID, mDay.getText().toString(), mStartTime.getText().toString(),mEndTime.getText().toString(), postID);
+
+                toConfirm(a);
             }
         });
     }
@@ -69,11 +69,24 @@ public class BookActivity extends AppCompatActivity {
     public void addBooking(){
         //modelReservation a=new modelReservation("a","a","a","a","a");
     }*/
-    public void toConfirm()
+    public void toConfirm(final modelReservation reservation)
     {
-        Intent intent= new Intent(this,BookActivity.class); //needs to connect to ConfirmationActivity
-        intent.putExtra("POST_ID",postID);
-        startActivity(intent);
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Confirm")
+                .setMessage("Are you sure?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        CustReservation.child(CurrID).child("Reservations").child(resID).setValue(true);
+                        reservationRef.child(resID).setValue(reservation);
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
 
     }
     //changed my mind this method should be searching for conflicts.

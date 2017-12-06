@@ -1,11 +1,9 @@
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sjsu.jese.parkhere.Book.ConfirmationActivity"
-    android:id="@+id/submitBtn">
+    tools:context="com.sjsu.jese.parkhere.Book.ConfirmationActivity">
 
     <TextView
         android:id="@+id/Price"
@@ -15,6 +13,7 @@
         android:layout_below="@+id/textView6"
         android:layout_marginTop="54dp"
         android:text="Price"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="293dp" />
 
@@ -25,7 +24,8 @@
         android:layout_above="@+id/SubmitBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
-        android:text="PostID"
+        android:text="Post Title"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="124dp" />
 
@@ -36,6 +36,7 @@
         android:layout_alignStart="@+id/Price"
         android:layout_centerVertical="true"
         android:text="Resevation time"
+        android:textSize="24sp"
         tools:layout_editor_absoluteX="66dp"
         tools:layout_editor_absoluteY="214dp" />
 
@@ -61,5 +62,23 @@
         android:textAppearance="@android:style/TextAppearance.Large"
         tools:layout_editor_absoluteX="134dp"
         tools:layout_editor_absoluteY="35dp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_below="@+id/Price"
+        android:layout_marginTop="20dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/price"
+        android:layout_below="@+id/resTime"
+        android:layout_marginTop="24dp"
+        android:text="TextView" />
 
 </RelativeLayout>
