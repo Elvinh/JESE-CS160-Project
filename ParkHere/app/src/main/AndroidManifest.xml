@@ -31,6 +31,7 @@
 
         <activity android:name=".Book.BookActivity" />
         <activity android:name=".Book.ConfirmationActivity" />
+        <activity android:name=".profile.MyPostsActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

@@ -2,6 +2,7 @@ package com.sjsu.jese.parkhere.profile;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,22 +22,23 @@ import com.sjsu.jese.parkhere.postDetails.PostDetailActivity;
 import java.util.ArrayList;
 
 /**
- * Created by sandeepsamra on 12/3/17.
+ * Created by Elton on 11/5/2017.
  */
 
- class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder>{
+class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
     private ArrayList<Post> posts;
     private Context context;
 
-    MyPostsAdapter(Context context, ArrayList<Post> values) {
-        this.context = context;
+    MyPostsAdapter(ArrayList<Post> values) {
         this.posts = values;
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d("hey", "im here");
+        context = parent.getContext();
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item,parent,false));
+
     }
 
     @Override
@@ -87,4 +89,4 @@ import java.util.ArrayList;
             });
         }
     }
- }
+}
