@@ -14,7 +14,7 @@ public class Post {
     String dateAvailable;
     String dateEnd;
     private String uid;
-    int averageRating;
+    float averageRating;
 
 
     public Post() {}
@@ -40,11 +40,11 @@ public class Post {
         this.dateEnd = dateEnd;
     }
 
-    public int getAverageRating() {
+    public float getAverageRating() {
         return averageRating;
     }
 
-    public void setAverageRating(int averageRating) {
+    public void setAverageRating(float averageRating) {
         this.averageRating = averageRating;
     }
 

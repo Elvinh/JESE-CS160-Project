@@ -82,7 +82,7 @@ public class ReviewAcivity extends AppCompatActivity {
                 else{
 
                     Review r = new Review(currUser.getUid(), title_text,
-                            describ_text, (int) mRate.getRating());
+                            describ_text, mRate.getRating());
                     r.setPostId(currentPost);
                     addToDataBase(r);
                 }
@@ -98,13 +98,13 @@ public class ReviewAcivity extends AppCompatActivity {
         mReviewRef.orderByChild("postId").equalTo(currentPost).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Integer> values = new ArrayList<>();
-                int avgRating = 0;
+                ArrayList<Float> values = new ArrayList<>();
+                float avgRating = 0;
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Review review = child.getValue(Review.class);
                     values.add(review.getRate());
                 }
-                for(int value: values) {
+                for(float value: values) {
                     avgRating = avgRating + value;
                 }
 

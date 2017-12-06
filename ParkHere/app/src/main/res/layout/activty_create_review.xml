@@ -33,8 +33,7 @@
         android:layout_height="wrap_content"
         android:max="5"
         android:numStars="5"
-        android:stepSize="1"
-        android:rating="1"
+        android:stepSize="0.5"
         />
 
     <Button

@@ -9,12 +9,12 @@ public class Review {
     String userId;
     String title;
     String description;
-    int rate;
+    float rate;
     String postId;
 
    public Review(){}
 
-    public Review(String userId, String title, String description, int rate){
+    public Review(String userId, String title, String description, float rate){
        this.description=description;
        this.title=title;
        this.userId = userId;
@@ -53,7 +53,7 @@ public class Review {
         return this.userId;
     }
 
-    public void setRate(int rate) {
+    public void setRate(float rate) {
         if(0<rate || rate>5) {
             this.rate = rate;
         }
@@ -62,7 +62,7 @@ public class Review {
         }
     }
 
-    public int getRate() {
+    public float getRate() {
         return this.rate;
     }
 }

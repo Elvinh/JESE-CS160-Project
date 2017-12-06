@@ -55,7 +55,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
                 .using(new FirebaseImageLoader())
                 .load(imageRef)
                 .into(holder.postImage);
-        holder.averageRating.setRating((float) posts.get(position).getAverageRating());
+        holder.averageRating.setRating( posts.get(position).getAverageRating());
         holder.averageRating.setIsIndicator(true);
     }
 
