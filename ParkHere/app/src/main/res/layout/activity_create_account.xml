@@ -45,8 +45,7 @@
         android:layout_below="@+id/passwordField"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="screenname"
-        android:inputType="textPostalAddress" />
+        android:hint="screenname" />
 
     <EditText
         android:id="@+id/phoneNumberField"

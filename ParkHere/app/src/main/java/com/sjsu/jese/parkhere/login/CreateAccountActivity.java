@@ -56,13 +56,14 @@ public class CreateAccountActivity extends AppCompatActivity {
         zipText = (EditText) findViewById(R.id.zipField);
         submitBtn = (Button) findViewById(R.id.submitBtn);
 
+        mAuth = FirebaseAuth.getInstance();
+
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createAccount();
             }
         });
-        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -120,6 +121,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
+
                     String screenName = screenNameText.getText().toString();
                     String phoneNum = phoneNumText.getText().toString();
                     String streetAddress = streetAddressText.getText().toString();
@@ -133,20 +135,11 @@ public class CreateAccountActivity extends AppCompatActivity {
                     // add to Firebase database
                     customersRef.child(user.getUid()).setValue(customer);
 
-                   // set values for screenname and photourl
+                  // set values for screenname and photourl
                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(screenName)
-                            .setPhotoUri(Uri.parse(""))
-                            .build();
+                            .setDisplayName(screenName).build();
 
-                    user.updateProfile(profileUpdates)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                    }
-                                }
-                            });
+                    user.updateProfile(profileUpdates);
 
                     toLogin();
                 }
@@ -160,5 +153,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void toLogin() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
