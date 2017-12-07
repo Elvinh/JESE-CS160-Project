@@ -15,7 +15,7 @@
 
             android:id="@+id/card_view"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="650dp"
             card_view:contentPaddingLeft="20dp"
             card_view:contentPaddingRight="20dp"
             card_view:cardBackgroundColor="@android:color/transparent"
@@ -33,6 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/item_size"
                     android:layout_alignParentStart="true"
+                    android:clickable="true"
                     android:src="@mipmap/driveway1"
                 />
 
@@ -67,14 +68,22 @@
 
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="2dp"
-                    android:layout_marginBottom="25dp"
-                    android:layout_above="@+id/item_price"
+                    android:layout_above="@+id/price"
                     android:text="Title"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/md_grey_800"
                     android:textSize="30sp"
                     android:textStyle="bold" />
-
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/item_price"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#455A64"
+                    android:text="Price ($): " />
                 <EditText
                     android:id="@+id/item_price"
                     android:layout_width="match_parent"
