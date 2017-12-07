@@ -20,6 +20,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.sjsu.jese.parkhere.Book.BookActivity;
 import com.sjsu.jese.parkhere.R;
+import com.sjsu.jese.parkhere.Review.PostReviewsActivity;
 import com.sjsu.jese.parkhere.Review.ReviewAcivity;
 import com.sjsu.jese.parkhere.model.Address;
 import com.sjsu.jese.parkhere.model.Post;
@@ -94,8 +95,8 @@ public class PostDetailActivity extends AppCompatActivity {
         mReviewBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(PostDetailActivity.this, ReviewAcivity.class);
-                intent.putExtra(CURRENTPOST,postId);
+                Intent intent=new Intent(PostDetailActivity.this, PostReviewsActivity.class);
+                intent.putExtra("POST_ID", postId);
                 startActivity(intent);
 
             }
