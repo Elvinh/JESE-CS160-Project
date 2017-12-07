@@ -83,7 +83,7 @@
             android:id="@+id/dailyRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="120dp"
             android:text="$10/hour"
             android:textSize="20sp"
             android:textColor="@color/cardview_dark_background"
@@ -143,6 +143,6 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="@color/md_white_1000"
-        android:text="Review"/>
+        android:text="Reviews"/>
 
 </LinearLayout>

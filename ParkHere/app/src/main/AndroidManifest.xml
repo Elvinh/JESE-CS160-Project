@@ -36,7 +36,8 @@
             android:value="AIzaSyDj3cYi8ucR1H291GL7Z4Ol36-kaKwyLhU" />
 
         <activity android:name=".postDetails.PostDetailActivity" />
-        <activity android:name=".profile.MyReservationsActivity"></activity>
+        <activity android:name=".profile.MyReservationsActivity" />
+        <activity android:name=".Review.PostReviewsActivity"></activity>
     </application>
 
 </manifest>

@@ -51,7 +51,7 @@ public class ReviewAcivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activty_create_review);
 
-        currentPost= getIntent().getStringExtra(CURRENTPOST);
+        currentPost= getIntent().getStringExtra("POST_ID");
         Log.d("Review","current post id"+currentPost);
 
          mDescrib=(EditText)findViewById(R.id.review_decribtion);
