@@ -1,148 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="200dp">
-
-        <ImageView
-            android:id="@+id/post_detail_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:src="@mipmap/driveway1" />
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="1dp"
-        />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="5 mins walk to Levis Stadium"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/cardview_dark_background"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="5dp"
-        />
-
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="horizontal"
-         android:layout_marginBottom="10dp"
-         >
-
-         <Button
-             android:layout_width="30dp"
-             android:layout_height="30dp"
-             android:layout_gravity="right"
-             android:background="@mipmap/location"
-             android:layout_marginLeft="25dp"
-             android:clickable="true"
-
-             />
-         <TextView
-             android:id="@+id/address"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="10dp"
-             android:textSize="20sp"
-             android:text="Fake Ave, Santa Clara, 95123"
-             />
-
-
-     </LinearLayout>
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dailyRate"
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/post_detail_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:src="@mipmap/driveway1" />
+
+        </RelativeLayout>
+
+        <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:text="$10/hour"
-            android:textSize="20sp"
-            android:textColor="@color/cardview_dark_background"
+            android:layout_height="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
             />
+
         <TextView
-            android:id="@+id/carSize"
-            android:layout_marginLeft="20dp"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5 mins walk to Levis Stadium"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/cardview_dark_background"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="5dp"
+            />
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_marginBottom="10dp"
+             >
+
+             <Button
+                 android:layout_width="30dp"
+                 android:layout_height="30dp"
+                 android:layout_gravity="right"
+                 android:background="@mipmap/location"
+                 android:layout_marginLeft="25dp"
+                 android:clickable="true"
+
+                 />
+             <TextView
+                 android:id="@+id/address"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:textSize="20sp"
+                 android:text="Fake Ave, Santa Clara, 95123"
+                 />
+
+
+         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/dailyRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:text="$10/hour"
+                android:textSize="20sp"
+                android:textColor="@color/cardview_dark_background"
+                />
+            <TextView
+                android:id="@+id/carSize"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Compact" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/startDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Available from: " />
+
+        <TextView
+            android:id="@+id/endDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginStart="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Ends: " />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Description: " />
+
+        <TextView
+            android:id="@+id/descriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="left"
             android:textSize="20dp"
-            android:gravity="center"
+            android:text="Desadsasd adsasdasd asdasda sda asdasdadsadasasd asdasdsadasdasdasd asdadsasdasdasd asdadsasdasd asdasdasdasdsadadasdasdasdasd asdasdasdad " />
 
+        <Button
+            android:id="@+id/book_button"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:text="BOOK"
             android:textStyle="bold"
-            android:text="Compact" />
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/md_white_1000"
+            />
+        <Button
+            android:id="@+id/create_review_bt"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="25dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/md_white_1000"
+            android:text="Reviews"/>
+
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/startDateText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"
-        android:text="Available from: " />
-
-    <TextView
-        android:id="@+id/endDateText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="Ends: " />
-
-    <Button
-        android:id="@+id/book_button"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/colorPrimaryDark"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:clickable="true"
-        android:text="BOOK"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="@color/md_white_1000"
-        />
-    <Button
-        android:id="@+id/create_review_bt"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/colorPrimaryDark"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/md_white_1000"
-        android:text="Reviews"/>
-
-</LinearLayout>
+</ScrollView>

@@ -51,9 +51,8 @@ public class PostDetailActivity extends AppCompatActivity {
         final TextView mStartDate = (TextView) findViewById(R.id.startDateText);
         final TextView mEndDate = (TextView) findViewById(R.id.endDateText);
         final Button mBookBt=(Button) findViewById(R.id.book_button);
-
         final Button mReviewBt=(Button) findViewById(R.id.create_review_bt);
-
+        final TextView description = (TextView) findViewById(R.id.descriptionText);
         final ImageView mPostImage = (ImageView) findViewById(R.id.post_detail_image);
 
 
@@ -67,7 +66,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 mCarSize.setText((String ) dataSnapshot.child("carSize").getValue());
                 mStartDate.setText("Available from: " + (String) dataSnapshot.child("dateAvailable").getValue());
                 mEndDate.setText("Ends: " + (String) dataSnapshot.child("dateEnd").getValue());
-
+                description.setText((String) dataSnapshot.child("shortDescription").getValue());
             }
 
             @Override

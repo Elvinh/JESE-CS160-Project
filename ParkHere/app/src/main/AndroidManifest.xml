@@ -37,7 +37,8 @@
 
         <activity android:name=".postDetails.PostDetailActivity" />
         <activity android:name=".profile.MyReservationsActivity" />
-        <activity android:name=".Review.PostReviewsActivity"></activity>
+        <activity android:name=".Review.PostReviewsActivity" />
+        <activity android:name=".profile.EditPostActivity"></activity>
     </application>
 
 </manifest>
