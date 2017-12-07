@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="410dp"
     android:layout_marginBottom="50dp"
     android:clickable="true"
     card_view:contentPaddingTop="1dp"
@@ -66,19 +66,35 @@
             android:id="@+id/item_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/new_review"
+            android:layout_above="@+id/adads"
             android:text="Price"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/md_grey_700"
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/new_review"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:text="Write a Review"
-            />
+            android:id="@+id/adads">
+
+            <Button
+                android:id="@+id/edit_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/delete_post"
+                android:text="Edit Post"
+                />
+            <Button
+                android:id="@+id/delete_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete Post"
+                />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

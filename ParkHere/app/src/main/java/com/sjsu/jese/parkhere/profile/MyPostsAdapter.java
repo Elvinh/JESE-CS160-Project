@@ -1,19 +1,26 @@
 package com.sjsu.jese.parkhere.profile;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.sjsu.jese.parkhere.R;
@@ -38,7 +45,7 @@ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.d("hey", "im here");
         context = parent.getContext();
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.my_post_item,parent,false));
 
     }
 
@@ -73,7 +80,11 @@ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
         private View view;
         private ImageView postImage;
         private RatingBar averageRating;
-
+        private Button deletePost;
+        private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        private final DatabaseReference mPostsRef = mDatabase.getReference("Posts");
+        private final DatabaseReference mCustomersRef = mDatabase.getReference("Customers");
+        FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
         ViewHolder (View itemView) {
             super(itemView);
             view = itemView;
@@ -82,6 +93,30 @@ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
             size = (TextView) itemView.findViewById(R.id.item_size);
             postImage = (ImageView) itemView.findViewById(R.id.imageView3);
             averageRating = (RatingBar) itemView.findViewById(R.id.review_rating);
+            deletePost = (Button) itemView.findViewById(R.id.delete_post);
+
+            deletePost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(context)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setTitle("Confirm")
+                            .setMessage("Are you sure?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mPostsRef.child(currPost.getUid()).removeValue();
+                                    mCustomersRef.child(currUser.getUid()).child("posts").child(currPost.getUid()).removeValue();
+                                }
+
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+
+
+                }
+            });
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

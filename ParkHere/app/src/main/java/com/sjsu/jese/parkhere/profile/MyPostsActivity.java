@@ -55,7 +55,7 @@ public class MyPostsActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mPostsRef.orderByChild("ownerUid").equalTo(currUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        mPostsRef.orderByChild("ownerUid").equalTo(currUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Post> values = new ArrayList<>();
