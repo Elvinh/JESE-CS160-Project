@@ -24,6 +24,8 @@ public class ProfileViewFragment extends Fragment {
 
     RelativeLayout logoutLayout;
     RelativeLayout myPostsLayout;
+    RelativeLayout myReservationsLayout;
+
     TextView screenNameText;
     FirebaseAuth mAuth;
     public ProfileViewFragment() {
@@ -41,6 +43,8 @@ public class ProfileViewFragment extends Fragment {
 
         logoutLayout = (RelativeLayout) v.findViewById(R.id.logoutLayout);
         myPostsLayout = (RelativeLayout) v.findViewById(R.id.myPostsLayout);
+        myReservationsLayout = (RelativeLayout) v.findViewById(R.id.myReservationsLayout);
+
 
         screenNameText = (TextView) v.findViewById(R.id.screenNameText);
         screenNameText.setText(mAuth.getCurrentUser().getDisplayName());
@@ -56,6 +60,14 @@ public class ProfileViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(getActivity(), MyPostsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        myReservationsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), MyReservationsActivity.class);
                 startActivity(intent);
             }
         });

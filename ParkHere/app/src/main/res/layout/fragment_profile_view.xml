@@ -73,4 +73,31 @@
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_chrome_reader_mode_black_24dp" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/myReservationsLayout"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_alignStart="@+id/myPostsLayout"
+        android:layout_below="@+id/myPostsLayout"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_top">
+
+        <TextView
+            android:id="@+id/reservationsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="My Reservations"
+            android:textSize="28dp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/reservationsText"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_chrome_reader_mode_black_24dp" />
+    </RelativeLayout>
 </RelativeLayout>
