@@ -16,26 +16,11 @@
             android:layout_alignParentStart="true"
             android:src="@mipmap/driveway1" />
 
-        <TextView
-            android:id="@+id/dailyRate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="21dp"
-            android:layout_marginStart="29dp"
-            android:text="$10/hour"
-            android:textSize="20sp"
-            android:textColor="@color/cardview_dark_background"
-            />
-
-
     </RelativeLayout>
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="10dp"
-        android:background="@color/md_indigo_300"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
@@ -64,7 +49,7 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="horizontal"
-         android:layout_marginBottom="15dp"
+         android:layout_marginBottom="10dp"
          >
 
          <Button
@@ -72,6 +57,7 @@
              android:layout_height="30dp"
              android:layout_gravity="right"
              android:background="@mipmap/location"
+             android:layout_marginLeft="25dp"
              android:clickable="true"
 
              />
@@ -79,7 +65,7 @@
              android:id="@+id/address"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_marginLeft="20dp"
+             android:layout_marginLeft="10dp"
              android:textSize="20sp"
              android:text="Fake Ave, Santa Clara, 95123"
              />
@@ -87,68 +73,76 @@
 
      </LinearLayout>
 
-        <Button
-            android:id="@+id/book_button"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@color/md_pink_400"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:clickable="true"
-            android:text="BOOK"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_marginBottom="20dp"
-            />
-
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="1">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
 
-        <TableRow>
+        <TextView
+            android:id="@+id/dailyRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:text="$10/hour"
+            android:textSize="20sp"
+            android:textColor="@color/cardview_dark_background"
+            />
+        <TextView
+            android:id="@+id/carSize"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:gravity="center"
 
-            <TextView
-                android:id="@+id/shortDescription"
-                android:layout_gravity="left"
-                android:padding="3dip"
-                android:text="Some details about place" />
-        </TableRow>
+            android:textStyle="bold"
+            android:text="Compact" />
+    </LinearLayout>
 
-
-
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/carSize"
-                android:gravity="left"
-                android:padding="3dip"
-                android:text="- Parking available for any vehicle size" />
-        </TableRow>
-
-
-
-
-
-    </TableLayout>
 
     <TextView
         android:id="@+id/startDateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
         android:text="Available from: " />
 
     <TextView
         android:id="@+id/endDateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dp"
         android:text="Ends: " />
 
     <Button
+        android:id="@+id/book_button"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:text="BOOK"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/md_white_1000"
+        />
+    <Button
         android:id="@+id/create_review_bt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/md_white_1000"
         android:text="Review"/>
 
 </LinearLayout>

@@ -63,7 +63,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 mDailyRate.setText("$" + ((Long) dataSnapshot.child("dailyRate").getValue()).toString() + "/hr");
                 Address address = dataSnapshot.child("address").getValue(Address.class);
                 mAddress.setText(address.getStreetAddress() + ", " + address.getCity() + ", " + address.getZipCode());
-                mCarSize.setText( "Fits car of size: " + (String ) dataSnapshot.child("carSize").getValue());
+                mCarSize.setText((String ) dataSnapshot.child("carSize").getValue());
                 mStartDate.setText("Available from: " + (String) dataSnapshot.child("dateAvailable").getValue());
                 mEndDate.setText("Ends: " + (String) dataSnapshot.child("dateEnd").getValue());
 
