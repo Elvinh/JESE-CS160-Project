@@ -81,6 +81,8 @@ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
         private ImageView postImage;
         private RatingBar averageRating;
         private Button deletePost;
+        private Button editPost;
+
         private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         private final DatabaseReference mPostsRef = mDatabase.getReference("Posts");
         private final DatabaseReference mCustomersRef = mDatabase.getReference("Customers");
@@ -94,6 +96,7 @@ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
             postImage = (ImageView) itemView.findViewById(R.id.imageView3);
             averageRating = (RatingBar) itemView.findViewById(R.id.review_rating);
             deletePost = (Button) itemView.findViewById(R.id.delete_post);
+            editPost = (Button) itemView.findViewById(R.id.edit_post);
 
             deletePost.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +118,15 @@ class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.ViewHolder> {
                             .show();
 
 
+                }
+            });
+
+            editPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent toPostDetails = new Intent(context, EditPostActivity.class);
+                    toPostDetails.putExtra("POST_ID", currPost.getUid());
+                    context.startActivity(toPostDetails);
                 }
             });
 
